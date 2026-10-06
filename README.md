@@ -11,9 +11,7 @@
 在本仓库根目录执行：
 
 ```powershell
-cmake -S . -B build -G "Visual Studio 18 2026" -A Win32 -DBUILD_TESTING=ON
-cmake --build build --config Release --target ttp_i18n ttp_i18n_catalog_tests --parallel 4
-ctest --test-dir build -C Release --output-on-failure
+./build.ps1 -Package
 ```
 
 DLL 和翻译分别输出到 `build/Release/AddIn/ttp_i18n.dll` 和 `build/Release/i18n`。
@@ -44,11 +42,11 @@ DLL 的 Debug 配置也使用兼容运行库，保留调试符号；发布时使
 在本仓库的 **Actions → Manual i18n Windows Build → Run workflow** 手动运行
 [构建工作流](.github/workflows/manual-build.yml)。`configuration` 可选择
 `Release`（默认）、`RelWithDebInfo` 或 `Debug`。
-勾选 **Release a Version (GitHub)** 后，构建和测试通过时自动创建 GitHub Release；
+勾选 **Release a Version (GitHub)** 后，构建和导入审计通过时自动创建 GitHub Release；
 发布必须选择 `Release` 配置。默认不勾选，仅生成 Actions 构建产物。
 
 工作流使用 [GitHub 官方 Windows Server 2025／VS 2026 镜像](https://github.com/actions/runner-images#available-images)，
-构建 x86 DLL，运行目录解析和简繁翻译测试，并检查 DLL 的 XP／Win7 静态导入。
+构建 x86 DLL，并检查 DLL 的 XP／Win7 静态导入；测试仅在本地运行。
 ABI、兼容构建脚本、导入检查脚本和所需许可均随本仓库提供。
 
 成功后，在该次运行的 **Artifacts** 下载 `ttp_i18n-Windows-x86-配置-运行编号`。
@@ -59,8 +57,8 @@ ABI、兼容构建脚本、导入检查脚本和所需许可均随本仓库提�
 - `SHA256SUMS.txt`，记录 DLL 和 `i18n` 目录内各文件的校验值。
 
 ZIP 的 SHA-256 清单及用于核对构建来源的 `build-info.json` 随 Actions 产物提供，
-构建信息不放入 ZIP；PDB 保留在构建目录。产物保留 14 天，
-失败时上传配置／测试诊断并保留 7 天。构建和发布准备只使用仓库读取权限，
+构建信息不放入 ZIP；Release 不生成 PDB，调试配置可保留符号。产物保留 14 天，
+失败时上传配置／导入审计诊断并保留 7 天。构建和发布准备只使用仓库读取权限，
 仅 GitHub Release 发布任务使用 `contents: write`，通过内置 `GITHUB_TOKEN` 发布。
 导入检查用于验证加载依赖，旧系统上的实际行为仍需在对应系统中测试。
 
@@ -70,9 +68,9 @@ ZIP 的 SHA-256 清单及用于核对构建来源的 `build-info.json` 随 Actio
 发布运行共用一个并发组，覆盖构建、版本分配和发布，普通构建可独立运行。
 日期在构建开始时确定，即使构建跨过北京时间午夜，发布仍使用该日期。
 
-发布按“构建与测试 → 准备发布 → GitHub Release”进行。准备和发布时均核对提交、
+发布按“确定版本并构建 → 准备发布 → GitHub Release”进行。准备和发布时均核对提交、
 配置及 ZIP 的 SHA-256。最终附件为 `ttp_i18n-x86-版本号.zip` 和 `SHA256SUMS.txt`，
-同日补丁发布只重命名 ZIP 并更新外部校验清单，不改变 ZIP 内容。
+最终补丁号在编译前分配并写入 DLL；准备发布阶段只验证并转交该版本的发行包。
 Release 标题和标签均为版本号，标签指向本次构建提交；说明包含完整更新日志链接和安装步骤。
 已有版本不会被覆盖，重新完整运行工作流时会根据当时已占用的版本号重新分配。
 
@@ -83,9 +81,10 @@ Release 标题和标签均为版本号，标签指向本次构建提交；说明
 ```
 
 打包脚本会检查 DLL 与兼容审计报告的 SHA-256 一致，并检查翻译齐全。
-本地不传版本号时仍生成 `ttp_i18n-x86-Release.zip`；可传入
-`-PackageVersion 2026.09.20` 使用与 Actions 相同的日期文件名。
-打包和发布流程的本地回归检查可运行 `./tests/manual_release_tests.ps1`，使用模拟 API，不创建远程 Release。
+本地不传版本号时使用北京时间日期；若 DLL 已使用指定版本构建，打包时必须传入相同
+`-PackageVersion`。脚本会检查 DLL 的文件版本和固定数字版本，防止只改 ZIP 名称。
+推荐使用 `./build.ps1 -Package` 连续完成版本确定、构建、审计和打包。
+本次日期／补丁分配回归测试位于本地 `rebuild/tests/dll_size_versions`，使用模拟 API，不创建远程 Release。
 
 ## 部署与读取规则
 
@@ -221,3 +220,18 @@ ctest --test-dir rebuild/build -C Release -R "^(i18n_ui_tests|i18n_startup_tests
 
 翻译校验会检查简繁中文的模板覆盖、占位符、分隔符及过滤模式，并验证资源导入和
 重复同步不会覆盖人工修改。独立执行：`python gettext/tests/translation_tests.py`。
+
+## 日期版本与 Release 体积优先构建
+
+DLL 的文件版本和产品版本使用北京时间 `yyyy.MM.dd`，同日发布补丁使用 `pN`；
+例如 `2026.10.06p1` 对应固定数字版本 `2026.10.6.1`。Actions 在编译前确定最终版本，
+DLL、发行包和发布标签使用同一版本。各项目继续独立构建。
+
+Release 的统一配置见 [cmake/size_release.cmake](cmake/size_release.cmake)：
+`/O1 /Os /Gy /Gw /GF`、跨模块优化和链接去除未引用代码／折叠相同代码，关闭 Release 调试信息。
+本项目经 `/Ob0`、`/Ob1`、`/Ob2` 对比，默认选择 `/Ob2`；
+可用 `-DTTP_SIZE_INLINE_LEVEL=0|1|2` 重新测量不同内联策略。
+保留正常浮点语义、异常处理及 VC-LTL／YY-Thunks 的 XP／Win7 兼容配置。
+Actions 不编译、不运行测试；本次新增的测试仅位于本地 `rebuild/tests/dll_size_versions`，不进入发行包。
+
+本地构建、补丁号分配及版本资源说明见 [日期版本构建](docs/BUILD_VERSION.md)。

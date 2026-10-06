@@ -5,16 +5,8 @@ param(
     [string]$PackageVersion
 )
 $ErrorActionPreference = 'Stop'
-$archiveVersion = $Configuration
-if ($PSBoundParameters.ContainsKey('PackageVersion')) {
-    $date = [datetime]::MinValue
-    if (-not [datetime]::TryParseExact($PackageVersion, 'yyyy.MM.dd',
-        [Globalization.CultureInfo]::InvariantCulture,
-        [Globalization.DateTimeStyles]::None, [ref]$date)) {
-        throw 'PackageVersion must be a valid Beijing build date in yyyy.MM.dd format.'
-    }
-    $archiveVersion = $PackageVersion
-}
+. (Join-Path $PSScriptRoot '../cmake/version.ps1')
+$archiveVersion = (Get-I18nBuildVersion $PackageVersion).Name
 $output = Join-Path $BuildDirectory $Configuration
 $dll = Join-Path $output 'AddIn/ttp_i18n.dll'
 $report = Join-Path $output 'i18n-legacy-imports.json'
@@ -23,6 +15,7 @@ foreach ($file in @($dll, $report)) {
         throw "Build and audit ttp_i18n.dll before packaging: missing $file"
     }
 }
+Assert-I18nFileVersion $dll $archiveVersion
 $audit = Get-Content -LiteralPath $report -Raw -Encoding UTF8 | ConvertFrom-Json
 $hash = (Get-FileHash -LiteralPath $dll -Algorithm SHA256).Hash.ToLowerInvariant()
 if ($audit.sha256 -cne $hash -or $audit.architecture -ne 'x86' -or

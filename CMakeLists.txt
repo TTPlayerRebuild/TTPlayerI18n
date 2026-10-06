@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.24)
-project(TtpI18n LANGUAGES CXX)
+project(TtpI18n LANGUAGES CXX RC)
 
 if(NOT WIN32)
   message(FATAL_ERROR "ttp_i18n is a Windows DLL")
@@ -8,9 +8,12 @@ endif()
 # One DLL serves both player editions, including standalone and Debug builds.
 # The player is a separate build; this repository owns its ABI and runtime policy.
 include("${CMAKE_CURRENT_SOURCE_DIR}/cmake/xp_runtime.cmake")
+include(cmake/size_release.cmake)
 # Runtime checks require a modern debug CRT; symbols and /Od still work.
 string(REGEX REPLACE "/RTC[1csu]+" "" CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG}")
-add_library(ttp_i18n SHARED src/catalog.cpp src/dll.cpp src/ttp_i18n.def)
+include(cmake/version.cmake)
+add_library(ttp_i18n SHARED src/catalog.cpp src/dll.cpp src/ttp_i18n.def "${CMAKE_CURRENT_BINARY_DIR}/generated/version.rc")
+add_dependencies(ttp_i18n ttp_i18n_version)
 target_compile_features(ttp_i18n PRIVATE cxx_std_20)
 target_include_directories(ttp_i18n PRIVATE include src)
 target_compile_definitions(ttp_i18n PRIVATE UNICODE _UNICODE NOMINMAX WIN32_LEAN_AND_MEAN)

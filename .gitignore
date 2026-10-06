@@ -71,3 +71,5 @@ Testing/
 # Local CI packages and Python caches
 /artifact/
 __pycache__/
+
+/BUILD_VERSION

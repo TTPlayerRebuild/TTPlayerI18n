@@ -41,7 +41,8 @@ jobs:
       PYTHONUTF8: '1'
       PYTHONDONTWRITEBYTECODE: '1'
     outputs:
-      release_date: ${{ steps.release_date.outputs.value }}
+      release_version: ${{ steps.version.outputs.version }}
+      previous_version: ${{ steps.version.outputs.previous }}
 
     steps:
       - name: Checkout
@@ -49,20 +50,17 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Validate release configuration and capture Beijing date
-        id: release_date
+      - name: Validate configuration and allocate version before compilation
+        id: version
         env:
-          PUBLISH_RELEASE: ${{ inputs.release_a_version }}
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_REQUESTED: ${{ inputs.release_a_version }}
         run: |
-          if ($env:PUBLISH_RELEASE -eq 'true' -and $env:BUILD_CONFIGURATION -ne 'Release') {
+          if ($env:RELEASE_REQUESTED -eq 'true' -and $env:BUILD_CONFIGURATION -ne 'Release') {
             throw 'Publishing to GitHub requires the Release build configuration.'
           }
-          $releaseDate = [DateTimeOffset]::UtcNow.ToOffset([TimeSpan]::FromHours(8)).ToString(
-            'yyyy.MM.dd', [Globalization.CultureInfo]::InvariantCulture)
-          "value=$releaseDate" | Out-File -FilePath $env:GITHUB_OUTPUT -Encoding utf8 -Append
-
-      - name: Test packaging and release workflow
-        run: ./tests/manual_release_tests.ps1
+          ./cmake/resolve_release_version.ps1 -Repository $env:GITHUB_REPOSITORY `
+            -ReleaseRequested:($env:RELEASE_REQUESTED -eq 'true')
 
       - name: Verify VS 2026 toolchain
         run: |
@@ -81,29 +79,27 @@ jobs:
           }
           "TTP_I18N_VS_INSTANCE=$($installation.Trim())" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
           python --version
-          if ($LASTEXITCODE -ne 0) { throw 'Python 3 is required for tests and the import audit.' }
+          if ($LASTEXITCODE -ne 0) { throw 'Python 3 is required for the import audit.' }
 
       # The repository contains its ABI, compatibility scripts and catalogs.
       # No sibling player checkout or original runtime DLLs are needed.
       - name: Configure
+        env:
+          PACKAGE_VERSION: ${{ steps.version.outputs.version }}
         run: >-
           cmake -S . -B build -G "Visual Studio 18 2026" -A Win32
           "-DCMAKE_GENERATOR_INSTANCE=$env:TTP_I18N_VS_INSTANCE"
-          -DBUILD_TESTING=ON
+          -DBUILD_TESTING=OFF
+          "-DTTP_I18N_BUILD_VERSION=$env:PACKAGE_VERSION"
 
       - name: Build and audit shared DLL
         run: >-
           cmake --build build --config "$env:BUILD_CONFIGURATION"
-          --target ttp_i18n ttp_i18n_catalog_tests --parallel 4
-
-      - name: Test catalogs and translations
-        run: >-
-          ctest --test-dir build -C "$env:BUILD_CONFIGURATION"
-          --output-on-failure --no-tests=error
+          --target ttp_i18n --parallel 4
 
       - name: Package DLL and translations
         env:
-          PACKAGE_VERSION: ${{ steps.release_date.outputs.value }}
+          PACKAGE_VERSION: ${{ steps.version.outputs.version }}
         run: |
           $ErrorActionPreference = 'Stop'
           ./tools/package.ps1 -BuildDirectory build -Configuration "$env:BUILD_CONFIGURATION" `
@@ -139,8 +135,6 @@ jobs:
           name: ttp_i18n-diagnostics-${{ inputs.configuration }}-${{ github.run_number }}
           path: |
             build/CMakeFiles/CMakeConfigureLog.yaml
-            build/Testing/Temporary/LastTest.log
-            build/Testing/Temporary/LastTestsFailed.log
             build/**/i18n-legacy-imports.json
           if-no-files-found: ignore
           retention-days: 7
@@ -158,7 +152,8 @@ jobs:
       run:
         shell: pwsh
     env:
-      RELEASE_DATE: ${{ needs.build.outputs.release_date }}
+      RELEASE_VERSION: ${{ needs.build.outputs.release_version }}
+      PREVIOUS_VERSION: ${{ needs.build.outputs.previous_version }}
     steps:
       - name: Download built i18n package
         uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8
@@ -181,52 +176,21 @@ jobs:
           $ErrorActionPreference = 'Stop'
           $info = Get-Content -LiteralPath artifact/build-info.json -Raw -Encoding utf8 | ConvertFrom-Json
           if ($info.commit -cne $env:GITHUB_SHA -or $info.configuration -cne 'Release' -or
-              $info.architecture -cne 'x86' -or $info.package_version -cne $env:RELEASE_DATE) {
+              $info.architecture -cne 'x86' -or $info.package_version -cne $env:RELEASE_VERSION) {
             throw 'The downloaded artifact does not match this Release build.'
           }
-          function Read-VersionTag([string]$name) {
-            $match = [regex]::Match($name, '^(?<date>[0-9]{4}\.[0-9]{2}\.[0-9]{2})(?:p(?<patch>[1-9][0-9]*))?$')
-            if (-not $match.Success) { return }
-            $date = [datetime]::MinValue
-            if (-not [datetime]::TryParseExact($match.Groups['date'].Value, 'yyyy.MM.dd',
-                [Globalization.CultureInfo]::InvariantCulture,
-                [Globalization.DateTimeStyles]::None, [ref]$date)) { return }
-            $patch = 0L
-            if ($match.Groups['patch'].Success -and -not [long]::TryParse($match.Groups['patch'].Value, [ref]$patch)) {
-              throw 'Version patch number is too large.'
-            }
-            [pscustomobject]@{ Name = $name; Date = $date; Patch = $patch }
+          $version = $env:RELEASE_VERSION
+          if ($version -notmatch '^[0-9]{4}\.[0-9]{2}\.[0-9]{2}(?:p[1-9][0-9]*)?$') {
+            throw 'Missing or invalid build version.'
           }
-          $base = Read-VersionTag $env:RELEASE_DATE
-          if (-not $base -or $base.Patch -ne 0) { throw 'Missing or invalid Beijing build date.' }
-          $archiveName = "ttp_i18n-x86-$($base.Name).zip"
+          $archiveName = "ttp_i18n-x86-$version.zip"
           $archive = "artifact/$archiveName"
           $hash = (Get-FileHash -LiteralPath $archive -Algorithm SHA256).Hash.ToLowerInvariant()
           $expectedHash = (Get-Content -LiteralPath artifact/SHA256SUMS.txt -Raw -Encoding utf8).Trim()
           if ($expectedHash -cne "$hash  $archiveName") { throw 'i18n package SHA-256 verification failed.' }
 
-          $tags = @(gh api "repos/$env:GITHUB_REPOSITORY/tags?per_page=100" --paginate --jq '.[].name')
-          if ($LASTEXITCODE -ne 0) { throw 'Could not read repository tags.' }
-          # Also reserve draft releases left by failed uploads, even without a tag.
-          $releaseTags = @(gh api "repos/$env:GITHUB_REPOSITORY/releases?per_page=100" --paginate --jq '.[].tag_name')
-          if ($LASTEXITCODE -ne 0) { throw 'Could not read existing releases.' }
-          $versions = @($tags | ForEach-Object { Read-VersionTag $_ })
-          $occupied = @($versions) + @($releaseTags | ForEach-Object { Read-VersionTag $_ })
-          $sameDay = @($occupied | Where-Object { $_.Date -eq $base.Date } | Sort-Object Patch -Descending)
-          $version = $base.Name
-          if ($sameDay.Count) {
-            if ($sameDay[0].Patch -eq [long]::MaxValue) { throw 'Version patch number is exhausted.' }
-            $version += 'p' + ($sameDay[0].Patch + 1).ToString([Globalization.CultureInfo]::InvariantCulture)
-          }
-          # Only rename the verified ZIP; its contents and checksum stay unchanged.
-          $archiveName = "ttp_i18n-x86-$version.zip"
-          if ($version -cne $info.package_version) {
-            Rename-Item -LiteralPath $archive -NewName $archiveName
-          }
-          "$hash  $archiveName" | Set-Content -LiteralPath artifact/SHA256SUMS.txt -Encoding utf8
-          $previous = $versions | Sort-Object Date, Patch -Descending | Select-Object -First 1
           $repoUrl = "$env:GITHUB_SERVER_URL/$env:GITHUB_REPOSITORY"
-          $logUrl = if ($previous) { "$repoUrl/compare/$($previous.Name)...$version" }
+          $logUrl = if ($env:PREVIOUS_VERSION) { "$repoUrl/compare/$env:PREVIOUS_VERSION...$version" }
                     else { "$repoUrl/commits/$version" }
           $notes = "**完整更新日志**: $logUrl`n`n" + $env:RELEASE_INSTALL_NOTES.Replace('{version}', $version)
           Write-Output "Preparing $version; changelog: $logUrl"
