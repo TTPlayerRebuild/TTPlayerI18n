@@ -148,6 +148,19 @@ def write_changed(path, text):
         path.write_text(text, encoding='utf-8', newline='\n')
 
 
+def code_messages(text):
+    # Adjacent C++ string literals form one message. Also collect Mark() keys
+    # used in constant arrays whose actual translation happens at display time.
+    token = r'(?:L)?"(?:[^"\\]|\\.)*"'
+    sequence = rf'({token}(?:\s*{token})*)'
+    def unquote(value):
+        return ''.join(json.loads(part.removeprefix('L')) for part in re.findall(token, value))
+    for match in re.finditer(r'i18n::(?:Literal|Text|Mark)\(\s*' + sequence + r'(?:\s*,\s*("[^"\n]*"))?', text):
+        yield (json.loads(match[2]) if match[2] else 'app', unquote(match[1]), ''), match.start()
+    for match in re.finditer(r'i18n::Plural\(\s*("[^"]*")\s*,\s*' + sequence + r'\s*,\s*' + sequence, text):
+        yield (json.loads(match[1]), unquote(match[2]), unquote(match[3])), match.start()
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--rebuild', type=Path, default=Path(__file__).resolve().parents[2] / 'rebuild')
@@ -157,24 +170,37 @@ def main():
                         help='Reuse resource msgids from this POT when no resource binary is supplied')
     parser.add_argument('--ttpres', type=Path)
     parser.add_argument('--exe', type=Path)
+    parser.add_argument('--updater', type=Path)
     parser.add_argument('--resource-texts', type=Path, action='append', default=[],
                         help='Supplement missing string IDs from a ttpres texts.json export')
     args = parser.parse_args()
     messages = {}
     if args.resource_template.exists():
         for entry in read_po(args.resource_template):
-            if entry.obsolete or not entry.context.startswith(('ttpres/', 'exe/')):
+            if entry.obsolete or not entry.context.startswith(('ttpres/', 'exe/', 'updater/')):
                 continue
             if entry.context in messages:
                 raise ValueError(f'Duplicate resource context: {entry.context}')
             messages[entry.context] = entry.source
     elif not (args.ttpres or args.exe or args.resource_texts):
         parser.error('No resource template found; supply --resource-template, --ttpres, --exe or --resource-texts')
-    for domain, path in [('ttpres', args.ttpres), ('exe', args.exe)]:
+    # Physical extension resources in ttpres have logical exe keys. Extract
+    # an EXE first so its refresh cannot subsequently erase those keys.
+    for domain, path in [('exe', args.exe), ('ttpres', args.ttpres), ('updater', args.updater)]:
         if path:
             messages = {key: value for key, value in messages.items() if not key.startswith(domain + '/')}
-            messages.update({key: text for key, text in extract(path, domain)
-                             if isinstance(text, str) and text and not text.startswith(('http://', 'https://'))})
+            for key, value in extract(path, domain):
+                if not isinstance(value, str) or not value or value.startswith(('http://', 'https://')): continue
+                ident = int(key.split('/')[2])
+                if domain == 'ttpres' and key.startswith('ttpres/string/') and ident >= 48000: continue
+                # Extended resources moved from the EXE to ttpres; retain the
+                # logical gettext keys used by existing translators/hosts.
+                if domain == 'ttpres' and (4090 <= ident <= 4230 or ident in (5800,5810,5820,5901)):
+                    key = key.replace('ttpres/', 'exe/', 1)
+                messages[key] = value
+    # Correct the known original resource typo even when reusing an old POT.
+    if 'ttpres/string/32904' in messages:
+        messages['ttpres/string/32904'] = '显示示波器效果'
     for path in args.resource_texts:
         for entry in json.loads(path.read_text(encoding='utf-8'))['entries']:
             key, value = entry['context'], entry['text']
@@ -184,17 +210,12 @@ def main():
                     value and not value.startswith(('http://', 'https://')):
                 messages.setdefault(key, value)
     entries = {(key, text, ''): [] for key, text in messages.items()}
-    literal = r'L("(?:[^"\\]|\\.)*")'
-    for source in sorted((args.rebuild / 'src').rglob('*.cpp')) + sorted((args.rebuild / 'src').rglob('*.h')):
+    for source in sorted((args.rebuild / 'src').rglob('*.cpp')) + sorted((args.rebuild / 'src').rglob('*.h')) + sorted((args.rebuild / 'include').rglob('*.h')):
         if source.parts[-2] == 'i18n':
             continue
         text = source.read_text(encoding='utf-8-sig')
-        for found in re.finditer(r'i18n::(?:Literal|Text)\(\s*' + literal + r'(?:\s*,\s*("[^"\n]*"))?', text):
-            key = (json.loads(found[2]) if found[2] else 'app', json.loads(found[1]), '')
-            entries.setdefault(key, []).append(f'{source.relative_to(args.rebuild).as_posix()}:{text.count(chr(10), 0, found.start()) + 1}')
-        for found in re.finditer(r'i18n::Plural\(\s*("[^"]*")\s*,\s*' + literal + r'\s*,\s*' + literal, text):
-            key = tuple(json.loads(found[i]) for i in (1, 2, 3))
-            entries.setdefault(key, []).append(f'{source.relative_to(args.rebuild).as_posix()}:{text.count(chr(10), 0, found.start()) + 1}')
+        for key, offset in code_messages(text):
+            entries.setdefault(key, []).append(f'{source.relative_to(args.rebuild).as_posix()}:{text.count(chr(10), 0, offset) + 1}')
     output = ['# TTPlayer interface translations. UTF-8.\n', 'msgid ""\nmsgstr ""\n',
               '"Project-Id-Version: TTPlayerRebuild\\n"\n',
               '"MIME-Version: 1.0\\n"\n', '"Content-Type: text/plain; charset=UTF-8\\n"\n',
@@ -204,7 +225,9 @@ def main():
             output.append('#: ' + ' '.join(locations) + '\n')
         if '|' in text or '\n' in text:
             output.append('#. Preserve separators, file patterns and format placeholders.\n')
-        if re.search(r'%(?:[-+ #0-9.*]*)(?:ll|l|h|I64|I32|z)?[diuoxXfFeEgGaAcCsSp]', text):
+        if context == 'ttpres/dialog/254/control/4294967295/4':
+            output.append('#. Static syntax example, not printf; the example field name may be translated.\n')
+        elif re.search(r'%(?:[-+ #0-9.*]*)(?:ll|l|h|I64|I32|z)?[diuoxXfFeEgGaAcCsSp]', text):
             output.append('#, c-format\n')
         output += [f'msgctxt {quote(context)}\n', f'msgid {quote(text)}\n']
         if plural:

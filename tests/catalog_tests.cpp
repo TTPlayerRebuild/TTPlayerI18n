@@ -89,7 +89,8 @@ msgstr[2] "many"
               *po.Lookup(nullptr, "file", "files", 11) == L"many", "Plural forms");
         Check(!po.Lookup(nullptr, "file", "other", 2), "Plural source mismatch");
         for (const auto context : {"ttpres/string/128", "ttpres/menu/1/item/0", "ttpres/dialog/1/title",
-                                   "exe/string/4091", "exe/menu/1/item/0", "exe/dialog/1/control/2/0"}) {
+                                   "exe/string/4091", "exe/menu/1/item/0", "exe/dialog/1/control/2/0",
+                                   "updater/dialog/101/control/1/0"}) {
             const auto resource = Catalog::Po(PoEntry(context, "打开", "Translated resource"));
             const auto translated = resource.Lookup(context, "開啟", "", 1);
             Check(translated && *translated == L"Translated resource", "PO resource lookup across source languages");
@@ -181,9 +182,9 @@ msgstr[2] "many"
                 catalogs = LoadCatalogs(argv[1], language);
                 Check(catalogs.size() == 1, "Shipped Chinese catalog loads through locale aliases");
                 const bool traditional = std::wstring_view(language) != L"chs" && std::wstring_view(language) != L"zh_CN";
-                Check(matches(catalogs[0], "app", "Error in ttpcomm.dll, please resetup this program!",
-                    traditional ? L"ttpcomm.dll 載入失敗，請重新安裝播放器！" : L"ttpcomm.dll 加载失败，请重新安装播放器！"),
-                    "Shipped startup error translation");
+                const auto startup = catalogs[0].Lookup("app", "ttpcomm.dll 缺少此版本播放器需要的运行时接口。\n\n请退出播放器，将完整发行包手动解压并替换到同一目录，包括主程序 EXE 和 ttpcomm.dll。请勿混用原版或旧版核心 DLL。", "", 1);
+                Check(startup && startup->find(traditional ? L"運行時" : L"运行时") != startup->npos,
+                      "Shipped startup error translation");
                 Check(matches(catalogs[0], "exe/string/4091", "屏幕选择", traditional ? L"屏幕選擇" : L"屏幕选择"),
                     "Shipped EXE translation");
                 Check(matches(catalogs[0], "ttpres/string/33146", "正在服务器上搜索歌词...",

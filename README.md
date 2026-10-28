@@ -126,7 +126,7 @@ MO 支持版本 0 的大小端格式。空译文、模糊（fuzzy）条目和废
 播放器继续使用 `ttpres.dll` 资源及重建版自建文本。
 
 播放器直接读取 `ttpres.dll` 和 EXE 的字符串表、菜单及对话框原文，不再编译
-`resource_messages.inc` 文本副本。DLL 加载 PO/MO 时为 `ttpres/`、`exe/` 下的
+`resource_messages.inc` 文本副本。DLL 加载 PO/MO 时为 `ttpres/`、`exe/`、`updater/` 下的
 字符串、菜单和对话框词条建立资源上下文索引：优先精确匹配 `msgctxt + msgid`，
 原文语言不同时使用唯一的资源上下文匹配。上下文对应多个有效原文时不猜测译文。
 格式占位符、分隔符和过滤模式按当前加载资源校验；缺词或校验失败即显示该资源原文。
@@ -154,7 +154,7 @@ EXE 保留了对它的启动导入，因此 Windows 会在入口函数运行前�
 
 翻译模板位于 [`i18n/ttplayer.pot`](i18n/ttplayer.pot)。语言文件分别为
 [简体中文](i18n/chs/ttplayer.po)、[繁體中文](i18n/cht/ttplayer.po)
-和 [English](i18n/en_US/ttplayer.po)。简繁中文已补齐当前模板；英文仍为部分翻译。
+和 [English](i18n/en_US/ttplayer.po)。三个语言目录均已补齐当前模板。
 各 PO 按自建文本、重建版资源、`ttpres` 字符串表、菜单及对话框分节，使用相同的
 `msgctxt` 和 `msgid`，便于维护同一套模板。资源原文语言差异由 DLL 的资源上下文索引处理。
 新增语言采用相同目录结构。
@@ -164,12 +164,15 @@ EXE 保留了对它的启动导入，因此 Windows 会在入口函数运行前�
 从工作区根目录更新模板：
 
 ```powershell
-python gettext/tools/extract_catalog.py
+python gettext/tools/extract_catalog.py --ttpres ttpres/build/Release/ttpres.dll --updater rebuild/build/Release/TTPUpdater.exe
+python gettext/tools/sync_catalogs.py
+python gettext/tools/export_resource_messages.py
 ```
 
 脚本扫描重建版代码，并复用现有 `gettext/i18n/ttplayer.pot` 中的资源词条，
-将模板写回 POT，不生成主程序文本表。需要重新提取原始资源时，可传入
-`--ttpres ttpres.dll --exe TTPlayer.exe`；提取二进制资源需要 Windows。
+将模板写回 POT，不生成主程序文本表。省略 DLL／EXE 参数时保留已有资源词条。
+提取二进制资源需要 Windows；`--exe` 可补充仍在 EXE 中的资源。重建版的扩展资源
+位于 ttpres，保留原有 `exe/` 翻译上下文；更新器使用独立的 `updater/` 上下文。
 `--rebuild` 可指定重建版源码目录，`--output` 可指定模板输出文件，
 `--resource-template` 可指定用于复用资源词条的 POT。构建 DLL 和播放器、运行播放器均无需 POT。
 
@@ -186,19 +189,37 @@ python gettext/tools/sync_catalogs.py --check
 独有的 `ttpres/string/136` 更新提示以繁体原文作为 `msgid`，简体 PO 提供对应译文。
 重新从 DLL 提取资源时也应带上这两个参数，以保留另一个版本新增的字符串。
 
-同步脚本按上下文匹配 `ttpres` 导出的菜单、对话框和字符串表，只填充空译文，
+同步脚本按上下文匹配可选的 `ttpres` 导出文件；没有导出文件也可运行。只填充空译文，
 保留已有人工修改和模糊标记，将退出模板的条目保留为废弃条目。
 字体、控件实现标签、URL、版本信息及嵌入文件不纳入界面翻译。
-重建版自建文本直接在 PO 中维护。繁体资源的一处格式说明保留了原文占位符
-`%(字段名)`，其余内容采用提供的繁体资源文本。若当前资源将此占位符写为其他文字，
-该条会因格式不匹配而回退为当前资源中的说明。
+重建版自建文本直接在 PO 中维护。只有播放列表选项的静态格式说明
+`ttpres/dialog/254/control/4294967295/4` 允许把示例 `%(字段名)` 译成 `%(field name)`；
+真实标题格式中的 `%(Title)` 等字段名称仍须保持不变。路径说明中的 `%USERPROFILE%`
+也必须完整保留，前后的文字和标点可以翻译。
 `--check` 只检查同步状态，不写入文件；脚本不生成 MO。
+
+代码提取支持相邻字符串、`i18n::Mark` 常量及 `include` 下的声明。
+新增显示文本应使用 `i18n::Text`／`Literal`；常量须先以 `Mark` 标记，并在显示时翻译。
+`export_resource_messages.py` 将代码和更新器文本写入 ttpres 的
+`resources/extended/messages.json`，使用 48000–59999 的稳定编号；随后重建 ttpres。
+两个仓库独立构建时不依赖相邻源码，此导出仅为维护步骤。当前模板包含 1,885 个词条，
+其中 468 个代码／更新器消息导出到资源 DLL。English 布局使用较宽的列、Tahoma 字体，
+并同步调整动态控件、导航栏和设备属性表；中文继续采用原版布局。
+
+字符串 32904 已修正为“显示示波器效果”，32587 保持“将选中歌曲作为下一个播放对象”。
+ttpres 在验证原版基准后应用这项明确修正，并在审计中反向还原校验。
 
 如已安装 GNU gettext 工具，可在工作区根目录生成 MO：
 
 ```powershell
 msgfmt --check --check-format -o gettext/i18n/en_US/ttplayer.mo gettext/i18n/en_US/ttplayer.po
 ```
+
+## 翻译鸣谢
+
+感谢 [jerry25-hash](https://github.com/jerry25-hash) 提供英文界面翻译、翻译说明及校对，并指出原版字符串 32904 的示波器工具提示错误。本项目已在此基础上合并英文译文，补充重建版新增界面的翻译。
+
+“尽听精彩”沿用其参考原英文版提供的译文 **“set you on fire!”**。
 
 ## 验证
 
@@ -218,7 +239,7 @@ cmake --build rebuild/build --config Release --target i18n_ui_tests --parallel 4
 ctest --test-dir rebuild/build -C Release -R "^(i18n_ui_tests|i18n_startup_tests)$" --output-on-failure
 ```
 
-翻译校验会检查简繁中文的模板覆盖、占位符、分隔符及过滤模式，并验证资源导入和
+翻译校验会检查简繁中文及英文的模板覆盖、占位符、分隔符及过滤模式，并验证资源导入和
 重复同步不会覆盖人工修改。独立执行：`python gettext/tests/translation_tests.py`。
 
 ## 日期版本与 Release 体积优先构建

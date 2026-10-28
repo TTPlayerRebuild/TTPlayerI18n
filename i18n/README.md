@@ -7,9 +7,9 @@
 
 | 目录 | 语言 | 内容 |
 | --- | --- | --- |
-| `chs/ttplayer.po` | 简体中文 | `ttpres/chs` 资源译文及重建版自建文本 |
-| `cht/ttplayer.po` | 繁體中文 | `ttpres/cht` 资源译文及重建版自建文本 |
-| `en_US/ttplayer.po` | English | 部分翻译，缺词显示原文 |
+| `chs/ttplayer.po` | 简体中文 | 当前模板的全部界面词条 |
+| `cht/ttplayer.po` | 繁體中文 | 当前模板的全部界面词条 |
+| `en_US/ttplayer.po` | English | 当前模板的全部界面词条 |
 
 PO 使用 UTF-8；`ttplayer.pot` 是完整翻译模板。各 PO 内按自建文本、
 重建版资源、`ttpres` 字符串表、菜单和对话框分节。
@@ -33,3 +33,6 @@ msgfmt --check --check-format -o en_US/ttplayer.mo en_US/ttplayer.po
 没有 `ttp_i18n.dll` 时，播放器沿用 `ttpres.dll` 和重建版自带文本。
 
 资源提取、补全和分类方法见 [维护翻译](../README.md#维护翻译)。
+
+英文翻译感谢 [jerry25-hash](https://github.com/jerry25-hash) 提供的译文、说明及校对。
+字符串 32904 已改为示波器效果说明；播放列表底部的字段格式说明也可正常显示英文。

@@ -11,45 +11,60 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'tools'))
 import sync_catalogs as sync
 
-TOKENS = re.compile(r'%\([^)]*\)|%%|%[-+ #0.\d*]*(?:hh|ll|I32|I64|[hljztLIw])?[diuoxXfFeEgGaAcCsSpn]|%.?')
+TOKENS = re.compile(r'%\([^)]*\)|%%|%[A-Z_][A-Z0-9_]+%|%[-+ #0.\d*]*(?:hh|ll|I32|I64|[hljztLIw])?[diuoxXfFeEgGaAcCsSpn]|%.?')
 
 
 class TranslationTests(unittest.TestCase):
     def test_extraction_reuses_pot_without_generating_host_text_table(self):
         template = ROOT / 'i18n/ttplayer.pot'
-        expected = {entry.key for entry in sync.read_po(template) if entry.context.startswith(('ttpres/', 'exe/'))}
+        expected = {entry.key for entry in sync.read_po(template) if entry.context.startswith(('ttpres/', 'exe/', 'updater/'))}
         with tempfile.TemporaryDirectory(prefix='ttp-i18n-extract-') as directory:
             rebuild = Path(directory) / 'rebuild'
             source = rebuild / 'src/app/main.cpp'
             source.parent.mkdir(parents=True)
-            source.write_text('i18n::Literal(L"Current code text");\n', encoding='utf-8')
+            source.write_text('i18n::Literal(L"Current " L"code text");\n', encoding='utf-8')
+            header = rebuild / 'include/message.h'
+            header.parent.mkdir(parents=True)
+            header.write_text('constexpr auto text = i18n::Mark(L"Header message");', encoding='utf-8')
             output = Path(directory) / 'ttplayer.pot'
             command = [sys.executable, '-X', 'utf8', str(ROOT / 'tools/extract_catalog.py'),
                        '--rebuild', str(rebuild), '--resource-template', str(template), '--output', str(output)]
             subprocess.run(command, check=True, capture_output=True)
             keys = {entry.key for entry in sync.read_po(output)}
-            self.assertEqual(expected | {('app', 'Current code text', '')}, keys)
+            self.assertEqual(expected | {('app', 'Current code text', ''), ('app', 'Header message', '')}, keys)
             self.assertFalse((rebuild / 'src/i18n/resource_messages.inc').exists())
             previous = output.read_bytes()
             subprocess.run(command, check=True, capture_output=True)
             self.assertEqual(previous, output.read_bytes())
 
-    def test_chinese_coverage_and_format_contracts(self):
+    def test_all_catalog_coverage_and_format_contracts(self):
         template = {entry.key for entry in sync.read_po(ROOT / 'i18n/ttplayer.pot')}
-        for language in ('chs', 'cht'):
+        for language in ('chs', 'cht', 'en_US'):
             entries = sync.read_po(ROOT / f'i18n/{language}/ttplayer.po')
             active = [entry for entry in entries if not entry.obsolete]
             self.assertEqual(template, {entry.key for entry in active})
             for entry in active:
                 with self.subTest(language=language, context=entry.context, source=entry.source):
-                    self.assertEqual({0}, set(entry.translations))
+                    self.assertEqual({0, 1} if entry.plural and language=='en_US' else {0}, set(entry.translations))
                     translated = entry.translations[0]
                     self.assertTrue(translated)
                     self.assertFalse(any(comment.startswith('#,') and 'fuzzy' in comment for comment in entry.comments))
-                    self.assertEqual(TOKENS.findall(entry.source), TOKENS.findall(translated))
+                    source = entry.source
+                    if entry.context == 'ttpres/dialog/254/control/4294967295/4':
+                        source = re.sub(r'%\([^)]*\)', '%(Field)', source, count=1)
+                        translated = re.sub(r'%\([^)]*\)', '%(Field)', translated, count=1)
+                    self.assertEqual(TOKENS.findall(source), TOKENS.findall(translated))
                     for separator in ('|', '\n', '\t'):
                         self.assertEqual(entry.source.count(separator), translated.count(separator))
                     self.assertEqual(re.findall(r'\*\.[\w*]+', entry.source), re.findall(r'\*\.[\w*]+', translated))
+
+    def test_oscilloscope_and_play_next_remain_distinct(self):
+        for language, expected in [('chs','显示示波器效果'),('cht','顯示示波器效果'),('en_US','Display oscilloscope effect')]:
+            entries={e.context:e for e in sync.read_po(ROOT / f'i18n/{language}/ttplayer.po') if not e.obsolete}
+            self.assertEqual('显示示波器效果', entries['ttpres/string/32904'].source)
+            self.assertEqual(expected, entries['ttpres/string/32904'].translations[0])
+            self.assertEqual('将选中歌曲作为下一个播放对象', entries['ttpres/string/32587'].source)
+            self.assertNotEqual(expected,entries['ttpres/string/32587'].translations[0])
 
     def test_resource_imports_and_catalog_order_are_current(self):
         template = sync.read_po(ROOT / 'i18n/ttplayer.pot')

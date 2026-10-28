@@ -6,76 +6,218 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#: src/ui/player_window_file_intake.cpp:1102
+#. Preserve separators, file patterns and format placeholders.
+msgctxt "app"
+msgid "\n\nOSZ 中没有有效的 .osu 音频引用，或引用的音乐文件不存在。"
+msgstr ""
+
+#: src/ui/player_window_file_intake.cpp:1266
+#. Preserve separators, file patterns and format placeholders.
+msgctxt "app"
+msgid "\n\n另有 "
+msgstr ""
+
+#: src/ui/player_window_options.cpp:185
+#. Preserve separators, file patterns and format placeholders.
+msgctxt "app"
+msgid "\n\n是否将这些安装已有的文件关联、文件夹和音频 CD 菜单交接给当前安装？\n选择“否”保留现状。Windows 10/11 的默认应用仍由系统设置选择。"
+msgstr ""
+
+#: src/ui/player_window.cpp:4212
+#. Preserve separators, file patterns and format placeholders.
+msgctxt "app"
+msgid "\n\n请检查文件是否只读、被占用，或所在目录是否可写。\n播放器已保留当前内容，请修复后再次保存或退出。"
+msgstr ""
+
+#: src/settings/file_association.cpp:134
+#. Preserve separators, file patterns and format placeholders.
+msgctxt "app"
+msgid "\n当前安装："
+msgstr ""
+
+#: src/ui/player_window_options.cpp:184
+#. Preserve separators, file patterns and format placeholders.
+msgctxt "app"
+msgid "\n当前安装：\n"
+msgstr ""
+
+#: src/settings/file_association.cpp:350
+#. Preserve separators, file patterns and format placeholders.
+msgctxt "app"
+msgid "\n部分关联恢复失败，请重试。恢复错误："
+msgstr ""
+
+#: src/ui/player_window_lyrics.cpp:4243
+#. Preserve separators, file patterns and format placeholders.
+msgctxt "app"
+msgid "\r\n\r\n歌词恢复文件：\r\n"
+msgstr ""
+
+#: src/ui/player_window_playlist.cpp:6519
+#. Preserve separators, file patterns and format placeholders.
+msgctxt "app"
+msgid "\r\n原文件的备份已保留在："
+msgstr ""
+
+#: src/ui/player_window_playlist.cpp:6470
+#. Preserve separators, file patterns and format placeholders.
+msgctxt "app"
+msgid "\r\n原文件的备份已保留在：\r\n"
+msgstr ""
+
+#: src/ui/player_window_playlist.cpp:1534
+#. Preserve separators, file patterns and format placeholders.
+msgctxt "app"
+msgid "\r\n另有 "
+msgstr ""
+
 #: src/integrations/discord_presence.cpp:127
 msgctxt "app"
 msgid " / 未知时长"
 msgstr ""
 
-#: src/ui/output_devices.cpp:853
+#: src/ui/output_devices.cpp:892
 msgctxt "app"
 msgid " Bits"
 msgstr ""
 
-#: src/ui/output_devices.cpp:846
+#: src/ui/output_devices.cpp:885
 msgctxt "app"
 msgid " Channels"
 msgstr ""
 
-#: src/ui/output_devices.cpp:855
+#: src/ui/output_devices.cpp:894
 msgctxt "app"
 msgid " Samples"
 msgstr ""
 
-#: src/ui/player_window_library.cpp:982
+#: src/audio/audio_engine.cpp:3396
+msgctxt "app"
+msgid " → float64 处理（Winamp 旁路） → "
+msgstr ""
+
+#: src/audio/audio_engine.cpp:3397
+msgctxt "app"
+msgid " → 原样（处理／音量旁路） → "
+msgstr ""
+
+#: src/audio/audio_engine.cpp:3397
+msgctxt "app"
+msgid " → 原版兼容 → "
+msgstr ""
+
+#: src/updater/main.cpp:135
+msgctxt "app"
+msgid " 已恢复更新前的全部文件。"
+msgstr ""
+
+#: src/ui/disc_lookup_dialog.cpp:75
+msgctxt "app"
+msgid " 碟 "
+msgstr ""
+
+#: src/ui/player_window_playlist.cpp:1534
+msgctxt "app"
+msgid " 项失败。"
+msgstr ""
+
+#: src/ui/player_window_file_intake.cpp:1266
+msgctxt "app"
+msgid " 项错误未展开。"
+msgstr ""
+
+#: src/ui/player_window_playlist.cpp:1516
+#. Preserve separators, file patterns and format placeholders.
+msgctxt "app"
+msgid " 首。\r\n"
+msgstr ""
+
+#: src/ui/player_window_file_intake.cpp:976
+msgctxt "app"
+msgid " 首曲目"
+msgstr ""
+
+#: src/ui/player_window_playlist.cpp:1515
+msgctxt "app"
+msgid " 首，失败 "
+msgstr ""
+
+#: src/ui/player_window_library.cpp:1027
 #, c-format
 msgctxt "app"
 msgid "%d stars"
 msgstr ""
 
-#: src/plugins/plugin_manager.cpp:1139
+#: src/ui/player_window_options.cpp:6911
+msgctxt "app"
+msgid "64 位浮点 / EQ / SSRC"
+msgstr ""
+
+#: src/audio/extension_correction.cpp:161
+msgctxt "app"
+msgid "7z 压缩包"
+msgstr ""
+
+#: src/plugins/plugin_manager.cpp:1217
 msgctxt "app"
 msgid "Aac.dll has no NERO_PLUGIN_GetPrimaryAudioObject export"
 msgstr ""
 
-#: src/ui/player_window_library.cpp:980
+#: src/audio/archive_member.cpp:364
+msgctxt "app"
+msgid "AddIn\\ttp_osu.dll 版本或接口不兼容。请更新 OSZ 插件后重新启动播放器。"
+msgstr ""
+
+#: src/ui/player_window_library.cpp:1025
 msgctxt "app"
 msgid "Album"
 msgstr ""
 
-#: src/ui/player_window_library.cpp:980
+#: src/ui/player_window_library.cpp:1025
 msgctxt "app"
 msgid "Artist"
 msgstr ""
 
-#: src/ui/player_window_library.cpp:981
+#: src/ui/player_window_library.cpp:1026
 msgctxt "app"
 msgid "Date"
 msgstr ""
 
-#: src/ui/output_devices.cpp:794
+#: src/ui/output_devices.cpp:833
 msgctxt "app"
 msgid "DirectSound capability query failed"
 msgstr ""
 
-#: src/ui/player_window_equalizer.cpp:1001
+#: src/ui/disc_lookup_dialog.cpp:41
+msgctxt "app"
+msgid "Disc ID 匹配。请核对发行版与曲目信息。"
+msgstr ""
+
+#: src/ui/player_window_equalizer.cpp:974
 msgctxt "app"
 msgid "Equlizer Profile (*.tteq_cfg)"
 msgstr ""
 
-#: src/app/main.cpp:54
-msgctxt "app"
-msgid "Error in ttpcomm.dll, please resetup this program!"
-msgstr ""
-
-#: src/ui/player_window_lyrics.cpp:2710
+#: src/ui/player_window_lyrics.cpp:3262
 #, c-format
 msgctxt "app"
 msgid "Failed to save lyric file %s."
 msgstr ""
 
-#: src/ui/player_window_library.cpp:981
+#: src/ui/player_window_library.cpp:1026
 msgctxt "app"
 msgid "Genre"
+msgstr ""
+
+#: src/ui/player_window_options.cpp:4930
+msgctxt "app"
+msgid "GitHub 发布页"
+msgstr ""
+
+#: src/ui/player_window_options.cpp:4931
+msgctxt "app"
+msgid "Gitee 发布页"
 msgstr ""
 
 #: src/ui/project_links.h:27
@@ -83,554 +225,626 @@ msgctxt "app"
 msgid "Github仓库"
 msgstr ""
 
-#: src/ui/playlist_transforms.cpp:1667
+#: src/update/update_http.cpp:226
+msgctxt "app"
+msgid "HTTPS 组件版本过旧，请从发布页更新 ttp_https.dll。"
+msgstr ""
+
+#: src/ui/playlist_transforms.cpp:1628
 msgctxt "app"
 msgid "ISoundEncoder slot 4 start failed"
 msgstr ""
 
-#: src/ui/output_devices.cpp:813
+#: src/ui/output_devices.cpp:852
 msgctxt "app"
 msgid "Kernel Streaming capability query failed"
 msgstr ""
 
-#: src/app/main.cpp:94
-msgctxt "app"
-msgid "Load resource (ttpres.dll) failed, please resetup this program!"
-msgstr ""
-
-#: src/ui/player_window_options.cpp:6580 src/ui/player_window_options.cpp:6616
+#: src/ui/player_window_options.cpp:7522 src/ui/player_window_options.cpp:7558
 msgctxt "app"
 msgid "Lyrics Profile (*.ttlr_cfg)"
 msgstr ""
 
-#: src/ui/playlist_transforms.cpp:952
+#: src/audio/audio_engine.cpp:2674
+msgctxt "app"
+msgid "MIDI 合成播放请使用原版兼容模式；高精度／原样输出仅适用于解码后的 PCM。"
+msgstr ""
+
+#: src/ui/playlist_transforms.cpp:914
 msgctxt "app"
 msgid "MP3 (LAME DLL)"
 msgstr ""
 
-#: src/ui/playlist_transforms.cpp:1726
+#: src/ui/playlist_transforms.cpp:1690
 msgctxt "app"
 msgid "MP3 metadata write failed"
 msgstr ""
 
-#: src/ui/player_window_library.cpp:980
+#: src/ui/player_window_library.cpp:1025
 msgctxt "app"
 msgid "Music"
 msgstr ""
 
-#: src/ui/player_window_options.cpp:6579 src/ui/player_window_options.cpp:6615
+#: src/ui/player_window_options.cpp:5224
+msgctxt "app"
+msgid "MusicBrainz 服务器:"
+msgstr ""
+
+#: src/ui/player_window_options.cpp:5222
+msgctxt "app"
+msgid "MusicBrainz（获取 CD 的专辑和音轨信息）"
+msgstr ""
+
+#: src/audio/wasapi_sink.cpp:204
+msgctxt "app"
+msgid "PCM 格式"
+msgstr ""
+
+#: src/ui/player_window_options.cpp:7521 src/ui/player_window_options.cpp:7557
 msgctxt "app"
 msgid "Playlist Profile (*.ttpl_cfg)"
 msgstr ""
 
-#: src/ui/player_window_library.cpp:981
+#: src/audio/extension_correction.cpp:160
+msgctxt "app"
+msgid "RAR 压缩包"
+msgstr ""
+
+#: src/ui/player_window_library.cpp:1026
 msgctxt "app"
 msgid "Rating"
 msgstr ""
 
-#: src/app/main.cpp:111
+#: src/app/main.cpp:162
 msgctxt "app"
 msgid "Sound Library init failed, the player can not run!"
 msgstr ""
 
-#: src/app/main.cpp:55 src/app/main.cpp:95
+#: src/audio/extension_correction.cpp:162
+msgctxt "app"
+msgid "TAR 归档"
+msgstr ""
+
+#: src/app/main.cpp:99 src/app/main.cpp:146
 msgctxt "app"
 msgid "TTPlayer"
 msgstr ""
 
-#: src/ui/player_window_lyrics.cpp:2742
+#: src/ui/player_window_lyrics.cpp:3294
 msgctxt "app"
 msgid "The lyric file was modified. Save it?"
 msgstr ""
 
-#: src/plugins/plugin_manager.cpp:1133
+#: src/plugins/plugin_manager.cpp:1211
 msgctxt "app"
 msgid "Unable to load Nero component: "
 msgstr ""
 
-#: src/ui/player_window_options.cpp:4741
+#: src/ui/player_window_options.cpp:4022
 msgctxt "app"
 msgid "Unavailable device"
 msgstr ""
 
-#: src/ui/player_window_visual_options.cpp:340
+#: src/ui/output_devices.cpp:630
+msgctxt "app"
+msgid "Unknown"
+msgstr ""
+
+#: src/ui/player_window_visual_options.cpp:478
 msgctxt "app"
 msgid "Vis Profile (*.ttvi_cfg)"
 msgstr ""
 
-#: src/settings/file_association.cpp:64
+#: src/ui/output_devices.cpp:955
+msgctxt "app"
+msgid "WASAPI (共享) - "
+msgstr ""
+
+#: src/ui/output_devices.cpp:955
+msgctxt "app"
+msgid "WASAPI (独占) - "
+msgstr ""
+
+#: src/ui/player_window_options.cpp:6907
+msgctxt "app"
+msgid "WASAPI 独占 / ASIO / Kernel Streaming"
+msgstr ""
+
+#: src/ui/player_window_options.cpp:6920
+msgctxt "app"
+msgid "Winamp 音效"
+msgstr ""
+
+#: src/ui/output_devices.cpp:959
+msgctxt "app"
+msgid "Windows 7 或更高版本"
+msgstr ""
+
+#: src/settings/file_association.cpp:69
 msgctxt "app"
 msgid "Windows error "
 msgstr ""
 
-#: src/settings/file_association.cpp:295
+#: src/audio/extension_correction.cpp:159
 msgctxt "app"
-msgid "association key is managed by another executable"
+msgid "ZIP 压缩包"
 msgstr ""
 
-#: src/settings/file_association.cpp:1238
+#: src/ui/disc_lookup_dialog.cpp:75
 msgctxt "app"
-msgid "capabilities belong to another installation"
+msgid "] 第 "
 msgstr ""
 
-#: src/settings/file_association.cpp:550
+#: src/settings/file_association.cpp:793
 msgctxt "app"
 msgid "clear legacy UserChoice backup"
 msgstr ""
 
-#: src/settings/file_association.cpp:317
+#: src/settings/file_association.cpp:560
 msgctxt "app"
 msgid "clear stale registry backup"
 msgstr ""
 
-#: src/settings/file_association.cpp:1445
+#: src/settings/file_association.cpp:2030
 msgctxt "app"
 msgid "configure IShellLinkW"
 msgstr ""
 
-#: src/ui/playlist_transforms.cpp:1559 src/ui/playlist_transforms.cpp:1610 src/ui/playlist_transforms.cpp:1676
+#: src/ui/playlist_transforms.cpp:1521 src/ui/playlist_transforms.cpp:1572 src/ui/playlist_transforms.cpp:1637
 msgctxt "app"
 msgid "conversion cancelled"
 msgstr ""
 
-#: src/ui/playlist_transforms.cpp:1588
+#: src/ui/playlist_transforms.cpp:1550
 msgctxt "app"
 msgid "conversion destination is a source file"
 msgstr ""
 
-#: src/ui/playlist_transforms.cpp:1594
+#: src/ui/playlist_transforms.cpp:1556
 msgctxt "app"
 msgid "conversion destination is another batch source"
 msgstr ""
 
-#: src/ui/playlist_transforms.cpp:1564
+#: src/ui/playlist_transforms.cpp:1526
 msgctxt "app"
 msgid "conversion destination is empty"
 msgstr ""
 
-#: src/ui/playlist_transforms.cpp:1197
+#: src/ui/playlist_transforms.cpp:1159
 msgctxt "app"
 msgid "conversion worker exception"
 msgstr ""
 
-#: src/settings/file_association.cpp:643
+#: src/settings/file_association.cpp:886
 msgctxt "app"
 msgid "create default-program registration"
 msgstr ""
 
-#: src/settings/file_association.cpp:1397
+#: src/settings/file_association.cpp:1970
 msgctxt "app"
 msgid "create shortcut"
 msgstr ""
 
-#: src/settings/file_association.cpp:1408
+#: src/settings/file_association.cpp:1981
 msgctxt "app"
 msgid "create shortcut directory"
 msgstr ""
 
-#: src/settings/file_association.cpp:1074
-msgctxt "app"
-msgid "default program belongs to another installation"
-msgstr ""
-
-#: src/ui/playlist_transforms.cpp:1601
+#: src/ui/playlist_transforms.cpp:1563
 msgctxt "app"
 msgid "destination is a directory"
 msgstr ""
 
-#: src/ui/playlist_transforms.cpp:1605
+#: src/ui/playlist_transforms.cpp:1567
 msgctxt "app"
 msgid "destination requires prompt"
 msgstr ""
 
-#: src/ui/playlist_transforms.cpp:1602 src/ui/playlist_transforms.cpp:1606
+#: src/ui/playlist_transforms.cpp:1564 src/ui/playlist_transforms.cpp:1568
 msgctxt "app"
 msgid "destination skipped"
 msgstr ""
 
-#: src/ui/playlist_transforms.cpp:1709
+#: src/ui/playlist_transforms.cpp:1673
 msgctxt "app"
 msgid "empty non-final PCM block"
 msgstr ""
 
-#: src/ui/playlist_transforms.cpp:1699
+#: src/ui/playlist_transforms.cpp:1663
 msgctxt "app"
 msgid "encoder PCM write failed"
 msgstr ""
 
-#: src/ui/playlist_transforms.cpp:1660
+#: src/ui/playlist_transforms.cpp:1621
 msgctxt "app"
 msgid "encoder destination open failed"
 msgstr ""
 
-#: src/ui/playlist_transforms.cpp:1714
+#: src/ui/playlist_transforms.cpp:1678
 msgctxt "app"
 msgid "encoder finalize failed"
 msgstr ""
 
-#: src/ui/playlist_transforms.cpp:1579
+#: src/ui/playlist_transforms.cpp:1541
 msgctxt "app"
 msgid "encoder has no valid configured file extension"
 msgstr ""
 
-#: src/ui/playlist_transforms.cpp:1563
+#: src/ui/playlist_transforms.cpp:1525
 msgctxt "app"
 msgid "encoder index is out of range"
 msgstr ""
 
-#: src/settings/file_association.cpp:1249
+#: src/settings/file_association.cpp:1809
 msgctxt "app"
 msgid "enumerate registered formats"
 msgstr ""
 
-#: src/settings/file_association.cpp:898 src/settings/file_association.cpp:1060 src/settings/file_association.cpp:1317 src/settings/file_association.cpp:1397
+#: src/settings/file_association.cpp:1457 src/settings/file_association.cpp:1619 src/settings/file_association.cpp:1890 src/settings/file_association.cpp:1970
 msgctxt "app"
 msgid "executable is empty"
 msgstr ""
 
-#: src/ui/output_devices.cpp:819
+#: src/audio/extension_correction.cpp:163
+msgctxt "app"
+msgid "gzip 压缩包"
+msgstr ""
+
+#: src/ui/output_devices.cpp:858
 msgctxt "app"
 msgid "invalid ASIO descriptor"
 msgstr ""
 
-#: src/ui/output_devices.cpp:777
+#: src/ui/output_devices.cpp:816
 msgctxt "app"
 msgid "invalid DirectSound GUID"
 msgstr ""
 
-#: src/ui/playlist_transforms.cpp:1621
+#: src/ui/playlist_transforms.cpp:1586
 msgctxt "app"
 msgid "invalid decoded PCM format"
 msgstr ""
 
-#: src/settings/file_association.cpp:815 src/settings/file_association.cpp:896 src/settings/file_association.cpp:1064 src/settings/file_association.cpp:1147 src/settings/file_association.cpp:1225
+#: src/settings/file_association.cpp:1243 src/settings/file_association.cpp:1249 src/settings/file_association.cpp:1351 src/settings/file_association.cpp:1374 src/settings/file_association.cpp:1455 src/settings/file_association.cpp:1623 src/settings/file_association.cpp:1706 src/settings/file_association.cpp:1784
 msgctxt "app"
 msgid "invalid extension"
 msgstr ""
 
-#: src/settings/file_association.cpp:731
+#: src/settings/file_association.cpp:1156
 msgctxt "app"
 msgid "invalid shortcut name"
 msgstr ""
 
-#: src/settings/file_association.cpp:1176
+#: src/settings/file_association.cpp:1735
 msgctxt "app"
 msgid "isolated registration cannot launch the live shell"
 msgstr ""
 
-#: src/ui/playlist_transforms.cpp:606
-msgctxt "app"
-msgid "legacy PCM processors require the x86 host"
-msgstr ""
-
-#: src/settings/file_association.cpp:508
-msgctxt "app"
-msgid "legacy UserChoice backup belongs to another installation"
-msgstr ""
-
-#: src/ui/player_window_options.cpp:4272
+#: src/ui/player_window_options.cpp:4768
 msgctxt "app"
 msgid "nanling与社区"
 msgstr ""
 
-#: src/ui/playlist_transforms.cpp:642
-msgctxt "app"
-msgid "offline processor could not encode PCM"
-msgstr ""
-
-#: src/ui/playlist_transforms.cpp:615
-msgctxt "app"
-msgid "offline processor does not support the PCM format"
-msgstr ""
-
-#: src/settings/file_association.cpp:662
+#: src/settings/file_association.cpp:905
 msgctxt "app"
 msgid "open OpenWithProgids"
 msgstr ""
 
-#: src/settings/file_association.cpp:1088
+#: src/settings/file_association.cpp:1647
 msgctxt "app"
 msgid "open RegisteredApplications"
 msgstr ""
 
-#: src/settings/file_association.cpp:1076 src/settings/file_association.cpp:1233
+#: src/settings/file_association.cpp:1635 src/settings/file_association.cpp:1792
 msgctxt "app"
 msgid "open capabilities"
 msgstr ""
 
-#: src/settings/file_association.cpp:1176
+#: src/settings/file_association.cpp:1735
 msgctxt "app"
 msgid "open default programs"
 msgstr ""
 
-#: src/settings/file_association.cpp:853
+#: src/settings/file_association.cpp:1412
 msgctxt "app"
 msgid "open extension key"
 msgstr ""
 
-#: src/settings/file_association.cpp:501
+#: src/settings/file_association.cpp:744
 msgctxt "app"
 msgid "open legacy UserChoice backup"
 msgstr ""
 
-#: src/settings/file_association.cpp:1195
+#: src/settings/file_association.cpp:1754
 msgctxt "app"
 msgid "open system default programs"
 msgstr ""
 
-#: src/ui/playlist_transforms.cpp:1684
+#: src/ui/player_window_osu_library.cpp:133
+msgctxt "app"
+msgid "osu! 谱面包 (*.osz)"
+msgstr ""
+
+#: src/ui/player_window_osu_library.cpp:223
+msgctxt "app"
+msgid "osu!lazer（读取中）"
+msgstr ""
+
+#: src/ui/player_window_osu_library.cpp:283
+msgctxt "app"
+msgid "osu!lazer（读取失败）"
+msgstr ""
+
+#: src/ui/player_window_osu_library.cpp:223
+msgctxt "app"
+msgid "osu!（读取中）"
+msgstr ""
+
+#: src/ui/player_window_osu_library.cpp:283
+msgctxt "app"
+msgid "osu!（读取失败）"
+msgstr ""
+
+#: src/ui/playlist_transforms.cpp:1646
 msgctxt "app"
 msgid "partial decoded PCM frame"
 msgstr ""
 
-#: src/settings/file_association.cpp:721
+#: src/settings/file_association.cpp:1146
 msgctxt "app"
 msgid "programs_subdirectory may not contain '..'"
 msgstr ""
 
-#: src/settings/file_association.cpp:716
+#: src/settings/file_association.cpp:1141
 msgctxt "app"
 msgid "programs_subdirectory must be relative"
 msgstr ""
 
-#: src/settings/file_association.cpp:666
+#: src/settings/file_association.cpp:909
 msgctxt "app"
 msgid "query OpenWithProgids"
 msgstr ""
 
-#: src/settings/file_association.cpp:815
+#: src/settings/file_association.cpp:1374
 msgctxt "app"
 msgid "query extension"
 msgstr ""
 
-#: src/settings/file_association.cpp:1084
+#: src/settings/file_association.cpp:1643
 msgctxt "app"
 msgid "read RegisteredApplications"
 msgstr ""
 
-#: src/settings/file_association.cpp:401
+#: src/settings/file_association.cpp:644
 msgctxt "app"
 msgid "read association backup metadata"
 msgstr ""
 
-#: src/settings/file_association.cpp:291 src/settings/file_association.cpp:366
+#: src/settings/file_association.cpp:536 src/settings/file_association.cpp:609 src/settings/file_association.cpp:1830 src/settings/file_association.cpp:1832
 msgctxt "app"
 msgid "read association owner"
 msgstr ""
 
-#: src/settings/file_association.cpp:1072
+#: src/settings/file_association.cpp:1631 src/settings/file_association.cpp:1797
 msgctxt "app"
 msgid "read capabilities owner"
 msgstr ""
 
-#: src/settings/file_association.cpp:647
+#: src/settings/file_association.cpp:890
 msgctxt "app"
 msgid "read default-program registration"
 msgstr ""
 
-#: src/settings/file_association.cpp:848
+#: src/settings/file_association.cpp:1407
 msgctxt "app"
 msgid "read extension backup"
 msgstr ""
 
-#: src/settings/file_association.cpp:935
+#: src/settings/file_association.cpp:1494
 msgctxt "app"
 msgid "read later legacy UserChoice"
 msgstr ""
 
-#: src/settings/file_association.cpp:485
+#: src/settings/file_association.cpp:728
 msgctxt "app"
 msgid "read legacy UserChoice"
 msgstr ""
 
-#: src/settings/file_association.cpp:490
+#: src/settings/file_association.cpp:733
 msgctxt "app"
 msgid "read legacy UserChoice Progid"
 msgstr ""
 
-#: src/settings/file_association.cpp:532
+#: src/settings/file_association.cpp:775
 msgctxt "app"
 msgid "read legacy UserChoice backup"
 msgstr ""
 
-#: src/settings/file_association.cpp:505
+#: src/settings/file_association.cpp:748
 msgctxt "app"
 msgid "read legacy UserChoice backup owner"
 msgstr ""
 
-#: src/settings/file_association.cpp:1243
+#: src/settings/file_association.cpp:1803
 msgctxt "app"
 msgid "read registered formats"
 msgstr ""
 
-#: src/settings/file_association.cpp:303 src/settings/file_association.cpp:582
+#: src/settings/file_association.cpp:546 src/settings/file_association.cpp:825
 msgctxt "app"
 msgid "read registry default value"
 msgstr ""
 
-#: src/settings/file_association.cpp:1060 src/settings/file_association.cpp:1064
+#: src/settings/file_association.cpp:1619 src/settings/file_association.cpp:1623
 msgctxt "app"
 msgid "register default program"
 msgstr ""
 
-#: src/settings/file_association.cpp:1086
+#: src/audio/plugin_registry.cpp:1585
 msgctxt "app"
-msgid "registered application name already in use"
+msgid "registry.json 保存失败，请检查文件权限或磁盘空间"
 msgstr ""
 
-#: src/settings/file_association.cpp:1287
+#: src/settings/file_association.cpp:1860
 msgctxt "app"
 msgid "remove RegisteredApplications entry"
 msgstr ""
 
-#: src/settings/file_association.cpp:432
+#: src/settings/file_association.cpp:675
 msgctxt "app"
 msgid "remove association metadata"
 msgstr ""
 
-#: src/settings/file_association.cpp:1291
+#: src/settings/file_association.cpp:1864
 msgctxt "app"
 msgid "remove capabilities"
 msgstr ""
 
-#: src/settings/file_association.cpp:451
+#: src/settings/file_association.cpp:694
 msgctxt "app"
 msgid "remove empty association key"
 msgstr ""
 
-#: src/settings/file_association.cpp:560
+#: src/settings/file_association.cpp:803
 msgctxt "app"
 msgid "remove legacy UserChoice backup"
 msgstr ""
 
-#: src/settings/file_association.cpp:522
+#: src/settings/file_association.cpp:765
 msgctxt "app"
 msgid "remove legacy UserChoice key"
 msgstr ""
 
-#: src/settings/file_association.cpp:715 src/settings/file_association.cpp:720
+#: src/settings/file_association.cpp:1140 src/settings/file_association.cpp:1145
 msgctxt "app"
 msgid "resolve Programs shortcut"
 msgstr ""
 
-#: src/settings/file_association.cpp:731
+#: src/settings/file_association.cpp:1156
 msgctxt "app"
 msgid "resolve shortcut path"
 msgstr ""
 
-#: src/settings/file_association.cpp:545
+#: src/settings/file_association.cpp:788
 msgctxt "app"
 msgid "restore legacy UserChoice"
 msgstr ""
 
-#: src/settings/file_association.cpp:421
+#: src/settings/file_association.cpp:664
 msgctxt "app"
 msgid "restore registry default value"
 msgstr ""
 
-#: src/settings/file_association.cpp:329
+#: src/settings/file_association.cpp:572
 msgctxt "app"
 msgid "save association ownership metadata"
 msgstr ""
 
-#: src/settings/file_association.cpp:516
+#: src/settings/file_association.cpp:759
 msgctxt "app"
 msgid "save legacy UserChoice backup"
 msgstr ""
 
-#: src/settings/file_association.cpp:311
+#: src/settings/file_association.cpp:554
 msgctxt "app"
 msgid "save registry default backup"
 msgstr ""
 
-#: src/settings/file_association.cpp:896 src/settings/file_association.cpp:898 src/settings/file_association.cpp:1147
+#: src/settings/file_association.cpp:1455 src/settings/file_association.cpp:1457 src/settings/file_association.cpp:1706
 msgctxt "app"
 msgid "set extension association"
 msgstr ""
 
-#: src/settings/file_association.cpp:1028
+#: src/settings/file_association.cpp:1587
 msgctxt "app"
 msgid "set icon for an unmanaged association"
 msgstr ""
 
-#: src/settings/file_association.cpp:1317
+#: src/settings/file_association.cpp:1890
 msgctxt "app"
 msgid "set shell integration"
 msgstr ""
 
-#: src/ui/playlist_transforms.cpp:593
+#: src/audio/archive_member.cpp:370
 msgctxt "app"
-msgid "ttpcomm equalizer initialization failed"
+msgid "ttpcomm.dll 缺少归档接口，请手动替换完整发行包。"
 msgstr ""
 
-#: src/ui/playlist_transforms.cpp:588
+#: src/app/main.cpp:98
+#. Preserve separators, file patterns and format placeholders.
 msgctxt "app"
-msgid "ttpcomm equalizer is unavailable"
+msgid "ttpcomm.dll 缺少此版本播放器需要的运行时接口。\n\n请退出播放器，将完整发行包手动解压并替换到同一目录，包括主程序 EXE 和 ttpcomm.dll。请勿混用原版或旧版核心 DLL。"
 msgstr ""
 
-#: src/ui/playlist_transforms.cpp:632
+#: src/app/main.cpp:145
+#. Preserve separators, file patterns and format placeholders.
 msgctxt "app"
-msgid "ttpcomm equalizer processing failed"
+msgid "ttpres.dll 缺失、无法加载或缺少此版本播放器需要的界面资源。\n\n请退出播放器，将完整发行包解压并替换到同一目录，包括主程序 EXE 和 ttpres.dll。"
 msgstr ""
 
-#: src/ui/playlist_transforms.cpp:601
-msgctxt "app"
-msgid "ttpcomm surround initialization failed"
-msgstr ""
-
-#: src/ui/playlist_transforms.cpp:596
-msgctxt "app"
-msgid "ttpcomm surround is unavailable"
-msgstr ""
-
-#: src/ui/playlist_transforms.cpp:639
-msgctxt "app"
-msgid "ttpcomm surround processing failed"
-msgstr ""
-
-#: src/ui/playlist_transforms.cpp:1732
+#: src/ui/playlist_transforms.cpp:1696
 msgctxt "app"
 msgid "unable to commit converted file"
 msgstr ""
 
-#: src/ui/playlist_transforms.cpp:1612
+#: src/ui/playlist_transforms.cpp:1574
 msgctxt "app"
 msgid "unable to create decoded audio source"
 msgstr ""
 
-#: src/ui/playlist_transforms.cpp:1656
+#: src/ui/playlist_transforms.cpp:1617
 msgctxt "app"
 msgid "unable to create output file"
 msgstr ""
 
-#: src/settings/file_association.cpp:1225
+#: src/settings/file_association.cpp:1784
 msgctxt "app"
 msgid "unregister default program"
 msgstr ""
 
-#: src/ui/output_devices.cpp:835
+#: src/ui/output_devices.cpp:874
 msgctxt "app"
 msgid "unsupported output backend"
 msgstr ""
 
-#: src/settings/file_association.cpp:672
+#: src/settings/file_association.cpp:915
 msgctxt "app"
 msgid "update OpenWithProgids"
 msgstr ""
 
-#: src/ui/output_devices.cpp:760
+#: src/ui/output_devices.cpp:799
 msgctxt "app"
 msgid "waveOutGetDevCapsW failed"
 msgstr ""
 
-#: src/settings/file_association.cpp:651
+#: src/settings/file_association.cpp:894
 msgctxt "app"
 msgid "write default-program registration"
 msgstr ""
 
-#: src/settings/file_association.cpp:342
+#: src/settings/file_association.cpp:585
 msgctxt "app"
 msgid "write registry default value"
+msgstr ""
+
+#: src/settings/file_association.cpp:1237 src/settings/file_association.cpp:1331
+msgctxt "app"
+msgid "不允许嵌套的关联批次"
+msgstr ""
+
+#: src/audio/archive_member.cpp:369
+msgctxt "app"
+msgid "不支持此压缩方式或成员类型。"
+msgstr ""
+
+#: src/ui/player_window_options.cpp:6903
+msgctxt "app"
+msgid "不支持此模式，播放时将报告错误"
+msgstr ""
+
+#: src/audio/plugin_registry.cpp:1433
+msgctxt "app"
+msgid "不支持的动态注册表接口："
 msgstr ""
 
 #: src/integrations/discord_presence.cpp:146
@@ -638,19 +852,90 @@ msgctxt "app"
 msgid "专辑："
 msgstr ""
 
-#: src/lyrics/service_catalog.cpp:240
+#: src/ui/player_window_options.cpp:6591
+msgctxt "app"
+msgid "两种星环效果可在全屏中使用。"
+msgstr ""
+
+#: src/ui/player_window_options.cpp:4829
+msgctxt "app"
+msgid "个人定制名称"
+msgstr ""
+
+#: src/ui/player_window.cpp:8281
+msgctxt "app"
+msgid "个人版"
+msgstr ""
+
+#: src/ui/options_general_tabs.h:103
+msgctxt "app"
+msgid "个性化"
+msgstr ""
+
+#: src/ui/player_window.cpp:1868
+msgctxt "app"
+msgid "以下全局快捷键未能启用。请更换组合键，或释放其它程序对这些组合键的占用："
+msgstr ""
+
+#: src/ui/player_window_playlist.cpp:1522
+#. Preserve separators, file patterns and format placeholders.
+msgctxt "app"
+msgid "以下项目未确认删除成功，原有列表信息已保留：\r\n"
+msgstr ""
+
+#: src/ui/player_window_options.cpp:6921
+msgctxt "app"
+msgid "使用配置的插件链"
+msgstr ""
+
+#: src/lyrics/service_catalog.cpp:268
 msgctxt "app"
 msgid "保存失败，未完成的文件保持原样。"
 msgstr ""
 
-#: src/lyrics/service_catalog.cpp:239
+#: src/ui/disc_lookup_dialog.cpp:87
+msgctxt "app"
+msgid "保存将更新所示歌曲信息，服务未返回的字段保留原值。"
+msgstr ""
+
+#: src/lyrics/service_catalog.cpp:267
 msgctxt "app"
 msgid "保存未完成（已成功保存的文件已保留）："
+msgstr ""
+
+#: src/ui/player_window_lyrics.cpp:3222 src/ui/player_window_lyrics.cpp:3245
+msgctxt "app"
+msgid "保存歌词"
+msgstr ""
+
+#: src/ui/player_window_options.cpp:6916
+msgctxt "app"
+msgid "保持源 PCM 的有效位深"
+msgstr ""
+
+#: src/ui/player_window_options.cpp:6918
+msgctxt "app"
+msgid "保持源采样率，禁止重采样"
 msgstr ""
 
 #: src/ui/player_window_playlist_search.cpp:823
 msgctxt "app"
 msgid "停止搜索"
+msgstr ""
+
+#: src/ui/player_window.cpp:1871
+msgctxt "app"
+msgid "全局快捷键"
+msgstr ""
+
+#: src/ui/player_window_lyric_content.cpp:96
+msgctxt "app"
+msgid "全屏显示当前内容"
+msgstr ""
+
+#: src/ui/player_window_options.cpp:6912
+msgctxt "app"
+msgid "全部 DSP、增益及音量处理旁路"
 msgstr ""
 
 #: src/ui/player_window_playlist_search.cpp:409
@@ -663,19 +948,401 @@ msgctxt "app"
 msgid "公用音乐"
 msgstr ""
 
-#: src/ui/player_window.cpp:4497
+#: src/ui/output_devices.cpp:957
+msgctxt "app"
+msgid "共享"
+msgstr ""
+
+#: src/ui/player_window_options.cpp:6923
+msgctxt "app"
+msgid "关闭"
+msgstr ""
+
+#: src/ui/options_network_tabs.h:47
+msgctxt "app"
+msgid "关闭 GPU 加速"
+msgstr ""
+
+#: src/ui/player_window_options.cpp:186
+msgctxt "app"
+msgid "切换文件关联安装"
+msgstr ""
+
+#: src/audio/wasapi_sink.cpp:283
+msgctxt "app"
+msgid "创建渲染接口"
+msgstr ""
+
+#: src/audio/wasapi_sink.cpp:225
+msgctxt "app"
+msgid "创建音频流"
+msgstr ""
+
+#: src/audio/wasapi_sink.cpp:215
+msgctxt "app"
+msgid "初始化"
+msgstr ""
+
+#: src/audio/wasapi_sink.cpp:281
+msgctxt "app"
+msgid "初始化共享模式"
+msgstr ""
+
+#: src/audio/wasapi_sink.cpp:281
+msgctxt "app"
+msgid "初始化独占模式"
+msgstr ""
+
+#: src/ui/player_window_playlist.cpp:1535
+msgctxt "app"
+msgid "删除增益信息"
+msgstr ""
+
+#: src/ui/player_window_playlist.cpp:1514
+msgctxt "app"
+msgid "删除增益信息已完成。成功 "
+msgstr ""
+
+#: src/ui/player_window_lyrics.cpp:4530
+msgctxt "app"
+msgid "删除逐字标签\tCtrl+F10"
+msgstr ""
+
+#: src/audio/plugin_registry.cpp:1438
+msgctxt "app"
+msgid "动态依赖注册表接入失败："
+msgstr ""
+
+#: src/app/main.cpp:122 src/ui/player_window_osu_library.cpp:288
+msgctxt "app"
+msgid "千千静听"
+msgstr ""
+
+#: src/ui/update_notice.cpp:28 src/ui/update_notice.cpp:82 src/ui/update_notice.cpp:99
+msgctxt "app"
+msgid "千千静听 - 最新版本"
+msgstr ""
+
+#: src/ui/update_notice.cpp:24
+msgctxt "app"
+msgid "千千静听 - 软件更新"
+msgstr ""
+
+#: src/audio/archive_member.cpp:375
+msgctxt "app"
+msgid "压缩包内找不到此文件。"
+msgstr ""
+
+#: src/ui/player_window_lyrics.cpp:3222
+msgctxt "app"
+msgid "压缩包内歌词为只读，请使用“另存为”保存到普通文件。"
+msgstr ""
+
+#: src/ui/archive_password_dialog.cpp:130
+msgctxt "app"
+msgid "压缩包密码"
+msgstr ""
+
+#: src/audio/archive_member.cpp:366
+msgctxt "app"
+msgid "压缩包密码不正确，或加密数据已损坏。"
+msgstr ""
+
+#: src/audio/archive_member.cpp:372
+msgctxt "app"
+msgid "压缩包成员超过允许的大小。"
+msgstr ""
+
+#: src/audio/archive_member.cpp:368
+msgctxt "app"
+msgid "压缩包所需的解压字典超过播放器的内存限制。"
+msgstr ""
+
+#: src/audio/archive_member.cpp:371
+msgctxt "app"
+msgid "压缩包数据损坏或校验失败。"
+msgstr ""
+
+#: src/audio/archive_member.cpp:367
+msgctxt "app"
+msgid "压缩包缺少分卷。请重新导入并选择所需分卷，或将全部分卷放在同一目录。"
+msgstr ""
+
+#: src/audio/archive_member.cpp:365
+msgctxt "app"
+msgid "压缩包需要密码。请播放或重新添加该压缩包以输入密码。"
+msgstr ""
+
+#: src/ui/player_window_options.cpp:4863
 msgctxt "app"
 msgid "原始文本"
 msgstr ""
 
-#: src/ui/player_window_options.cpp:4304
+#: src/audio/wasapi_sink.cpp:239
+msgctxt "app"
+msgid "原样独占格式协商"
+msgstr ""
+
+#: src/ui/player_window_options.cpp:5324 src/ui/player_window_options.cpp:6897
+msgctxt "app"
+msgid "原样输出"
+msgstr ""
+
+#: src/audio/wasapi_sink.cpp:304
+msgctxt "app"
+msgid "原样输出拒绝非有限浮点样本"
+msgstr ""
+
+#: src/audio/wasapi_sink.cpp:314
+msgctxt "app"
+msgid "原样输出要求音量增益为一"
+msgstr ""
+
+#: src/audio/audio_engine.cpp:2743
+msgctxt "app"
+msgid "原样输出需要 WASAPI 独占、ASIO 或 Kernel Streaming；共享模式经过系统混音器。"
+msgstr ""
+
+#: src/audio/wasapi_sink.cpp:193
+msgctxt "app"
+msgid "原样输出需要独占模式"
+msgstr ""
+
+#: src/ui/player_window_options.cpp:5323 src/ui/player_window_options.cpp:6896
+msgctxt "app"
+msgid "原版兼容"
+msgstr ""
+
+#: src/ui/player_window_options.cpp:6910
+msgctxt "app"
+msgid "原版兼容 DSP 链"
+msgstr ""
+
+#: src/audio/audio_engine.cpp:3092
+msgctxt "app"
+msgid "原版兼容 → DirectSound "
+msgstr ""
+
+#: src/updater/main.cpp:156
+msgctxt "app"
+msgid "发现新版本，可以立即更新。"
+msgstr ""
+
+#: src/ui/update_notice.cpp:29
+msgctxt "app"
+msgid "发现新版本，请点击通知前往选项更新。"
+msgstr ""
+
+#: src/ui/player_window_update.cpp:67
+msgctxt "app"
+msgid "发现新版本："
+msgstr ""
+
+#: src/audio/wasapi_sink.cpp:336
+msgctxt "app"
+msgid "取得音频缓冲区"
+msgstr ""
+
+#: src/ui/player_window_osu_library.cpp:50
+msgctxt "app"
+msgid "取消"
+msgstr ""
+
+#: src/settings/file_association.cpp:1331 src/settings/file_association.cpp:1351
+msgctxt "app"
+msgid "取消文件关联"
+msgstr ""
+
+#: src/ui/player_window_options.cpp:7409
+msgctxt "app"
+msgid "可执行文件 (*.exe)"
+msgstr ""
+
+#: src/ui/player_window_options.cpp:6592
+msgctxt "app"
+msgid "可用星环效果取决于 ttp_osu 插件版本。"
+msgstr ""
+
+#: src/ui/player_window_options.cpp:6905
+msgctxt "app"
+msgid "可用输出"
+msgstr ""
+
+#: src/ui/playlist_transforms.cpp:462
+msgctxt "app"
+msgid "同时扫描："
+msgstr ""
+
+#: src/ui/player_window_options.cpp:6084
+msgctxt "app"
+msgid "名称含有原版编码无法保存的字符，请更换。"
+msgstr ""
+
+#: src/ui/player_window_options.cpp:7454
+msgctxt "app"
+msgid "名称无法按原版编码保存，已保留先前名称。"
+msgstr ""
+
+#: src/ui/player_window_playlist.cpp:1520
+msgctxt "app"
+msgid "后台任务未能完成（"
+msgstr ""
+
+#: src/ui/player_window_options.cpp:4823
 msgctxt "app"
 msgid "向 Discord 发送播放的歌曲信息"
 msgstr ""
 
-#: src/ui/player_window_options.cpp:4312
+#: src/ui/player_window_options.cpp:4837
 msgctxt "app"
 msgid "向 Discord 发送歌词"
+msgstr ""
+
+#: src/ui/output_devices.cpp:958
+msgctxt "app"
+msgid "固定设备"
+msgstr ""
+
+#: src/ui/player_window_options.cpp:6896
+msgctxt "app"
+msgid "处理模式"
+msgstr ""
+
+#: src/ui/player_window_options.cpp:5315
+msgctxt "app"
+msgid "处理模式:"
+msgstr ""
+
+#: src/audio/wasapi_sink.cpp:150
+msgctxt "app"
+msgid "失败 ("
+msgstr ""
+
+#: src/ui/player_window_osu_library.cpp:287
+msgctxt "app"
+msgid "如果 osu!lazer 正在运行，请关闭后取消勾选并重新显示列表。"
+msgstr ""
+
+#: src/ui/options_library_tabs.h:129
+msgctxt "app"
+msgid "媒体库"
+msgstr ""
+
+#: src/ui/player_window_options.cpp:5205
+msgctxt "app"
+msgid "媒体来源"
+msgstr ""
+
+#: src/ui/archive_password_dialog.cpp:129
+#. Preserve separators, file patterns and format placeholders.
+msgctxt "app"
+msgid "密码已验证，但未能保存记住的密码。请检查播放器目录是否可写。\r\n错误代码：0x"
+msgstr ""
+
+#: src/ui/archive_password_dialog.cpp:36
+msgctxt "app"
+msgid "密码未通过校验，请重试。加密数据损坏也可能导致校验失败。"
+msgstr ""
+
+#: src/app/main.cpp:75
+#. Preserve separators, file patterns and format placeholders.
+msgctxt "app"
+msgid "导入失败，原配置未被覆盖。\n\n当前仅支持 Ozone 或 DFX 的 UTF-16LE REG 文件，不支持删除脚本或其它注册表分支。\n请确认文件可读取、配置目录可写，且配置未被其它进程占用。"
+msgstr ""
+
+#: src/ui/player_window_file_intake.cpp:1263
+msgctxt "app"
+msgid "导入未能完成，播放列表保持不变。"
+msgstr ""
+
+#: src/ui/player_window_file_intake.cpp:1263 src/ui/player_window_file_intake.cpp:1267
+msgctxt "app"
+msgid "导入歌曲"
+msgstr ""
+
+#: src/app/main.cpp:46
+msgctxt "app"
+msgid "导入音效插件配置"
+msgstr ""
+
+#: src/ui/player_window_osu_library.cpp:40 src/ui/player_window_osu_library.cpp:94 src/ui/player_window_osu_library.cpp:132 src/ui/player_window_osu_library.cpp:168 src/ui/player_window_osu_library.cpp:169
+msgctxt "app"
+msgid "导出osz文件"
+msgstr ""
+
+#: src/ui/player_window_osu_library.cpp:95
+msgctxt "app"
+msgid "导出全部歌曲"
+msgstr ""
+
+#: src/ui/player_window_osu_library.cpp:138
+msgctxt "app"
+msgid "导出全部歌曲 — 选择保存文件夹"
+msgstr ""
+
+#: src/ui/player_window_osu_library.cpp:159
+msgctxt "app"
+msgid "导出失败。"
+msgstr ""
+
+#: src/ui/player_window_osu_library.cpp:159
+msgctxt "app"
+msgid "导出完成。"
+msgstr ""
+
+#: src/ui/player_window_osu_library.cpp:94
+msgctxt "app"
+msgid "导出已选歌曲"
+msgstr ""
+
+#: src/ui/player_window_osu_library.cpp:138
+msgctxt "app"
+msgid "导出已选歌曲 — 选择保存文件夹"
+msgstr ""
+
+#: src/ui/player_window_update.cpp:75
+msgctxt "app"
+msgid "尚无可用的完整发行包，请前往发布页查看。"
+msgstr ""
+
+#: src/ui/player_window_options.cpp:6927
+msgctxt "app"
+msgid "尚未打开音频输出"
+msgstr ""
+
+#: src/ui/player_window_options.cpp:2036
+msgctxt "app"
+msgid "尽听精彩"
+msgstr ""
+
+#: src/ui/playlist_transforms.cpp:264
+msgctxt "app"
+msgid "已取消"
+msgstr ""
+
+#: src/ui/player_window_osu_library.cpp:159
+msgctxt "app"
+msgid "已取消导出。"
+msgstr ""
+
+#: src/audio/archive_member.cpp:373
+msgctxt "app"
+msgid "已取消读取压缩包。"
+msgstr ""
+
+#: src/ui/playlist_transforms.cpp:277
+msgctxt "app"
+msgid "已处理"
+msgstr ""
+
+#: src/ui/player_window_osu_library.cpp:70 src/ui/player_window_osu_library.cpp:160
+msgctxt "app"
+msgid "已导出谱面包："
+msgstr ""
+
+#: src/ui/player_window_file_intake.cpp:976
+msgctxt "app"
+msgid "已找到 "
 msgstr ""
 
 #: src/integrations/discord_presence.cpp:123
@@ -688,9 +1355,60 @@ msgctxt "app"
 msgid "已暂停 · "
 msgstr ""
 
+#: src/ui/player_window_extension_correction.cpp:122
+msgctxt "app"
+msgid "已有文件大小："
+msgstr ""
+
+#: src/app/main.cpp:70
+#. Preserve separators, file patterns and format placeholders.
+msgctxt "app"
+msgid "已有配置的备份为 registry.json.bak。\n\n保存位置：\n"
+msgstr ""
+
+#: src/settings/file_association.cpp:133
+msgctxt "app"
+msgid "已登记的安装："
+msgstr ""
+
+#: src/ui/player_window_options.cpp:6589
+msgctxt "app"
+msgid "已识别 osu!lazer。"
+msgstr ""
+
+#: src/ui/player_window_options.cpp:6589
+msgctxt "app"
+msgid "已识别 osu!。"
+msgstr ""
+
 #: src/ui/player_window_playlist_search.cpp:822
 msgctxt "app"
 msgid "开始搜索"
+msgstr ""
+
+#: src/audio/wasapi_sink.cpp:381
+msgctxt "app"
+msgid "开始播放"
+msgstr ""
+
+#: src/ui/player_window_update.cpp:75
+msgctxt "app"
+msgid "当前已是最新版本。"
+msgstr ""
+
+#: src/ui/player_window_options.cpp:7128 src/ui/player_window_skin_plugin.cpp:60
+msgctxt "app"
+msgid "当前插件尚不能使用此皮肤。"
+msgstr ""
+
+#: src/ui/player_window_extension_correction.cpp:118
+msgctxt "app"
+msgid "当前文件："
+msgstr ""
+
+#: src/updater/main.cpp:156
+msgctxt "app"
+msgid "当前没有可安装的新版本。"
 msgstr ""
 
 #: src/ui/player_window_playlist_search.cpp:408
@@ -698,7 +1416,39 @@ msgctxt "app"
 msgid "我的音乐"
 msgstr ""
 
-#: src/ui/player_window_playlist_network.cpp:36
+#: src/ui/archive_password_dialog.cpp:56
+msgctxt "app"
+msgid "所有文件"
+msgstr ""
+
+#: src/ui/archive_password_dialog.cpp:65
+#. Preserve separators, file patterns and format placeholders.
+msgctxt "app"
+msgid "所选文件不存在或无法访问，请重新选择。\r\n取消不会修改压缩包。"
+msgstr ""
+
+#: src/ui/player_window_options.cpp:4934
+msgctxt "app"
+msgid "打开更新器"
+msgstr ""
+
+#: src/audio/wasapi_sink.cpp:219
+msgctxt "app"
+msgid "打开音频设备"
+msgstr ""
+
+#: src/ui/archive_password_dialog.cpp:39
+#. Preserve separators, file patterns and format placeholders.
+msgctxt "app"
+msgid "找不到所需分卷：\r\n"
+msgstr ""
+
+#: src/ui/player_window_options.cpp:6922
+msgctxt "app"
+msgid "抖动"
+msgstr ""
+
+#: src/ui/player_window_playlist_network.cpp:42
 msgctxt "app"
 msgid "报告服务不可用，尚未提交。"
 msgstr ""
@@ -708,14 +1458,147 @@ msgctxt "app"
 msgid "提交反馈"
 msgstr ""
 
-#: src/ui/player_window.cpp:5078
+#: src/audio/wasapi_sink.cpp:301
 msgctxt "app"
-msgid "无法保存界面语言设置。"
+msgid "提交音频数据"
 msgstr ""
 
-#: src/lyrics/service_catalog.cpp:141
+#: src/audio/wasapi_sink.cpp:374
+msgctxt "app"
+msgid "提交音频缓冲区"
+msgstr ""
+
+#: src/audio/plugin_registry.cpp:1446
+msgctxt "app"
+msgid "插件依赖的注册表接入失败："
+msgstr ""
+
+#: src/ui/player_window_lyrics.cpp:4526
+msgctxt "app"
+msgid "插入逐字标签\tCtrl+F8"
+msgstr ""
+
+#: src/updater/main.cpp:111
+msgctxt "app"
+msgid "播放器尚未退出，请关闭播放器后重试。"
+msgstr ""
+
+#: src/updater/main.cpp:104
+msgctxt "app"
+msgid "播放器暂时无法退出，请保存正在编辑的内容后重试。"
+msgstr ""
+
+#: src/updater/main.cpp:91
+msgctxt "app"
+msgid "播放器目录不可写，请以具有该目录写入权限的用户运行更新器。"
+msgstr ""
+
+#: src/ui/player_window_options.cpp:5227
+msgctxt "app"
+msgid "播放缺少信息的 CD 音轨时自动查询"
+msgstr ""
+
+#: src/ui/disc_lookup_dialog.cpp:29 src/ui/disc_lookup_dialog.cpp:30
+msgctxt "app"
+msgid "操作失败"
+msgstr ""
+
+#: src/ui/player_window_options.cpp:6902
+msgctxt "app"
+msgid "支持此模式；实际格式需设备接受"
+msgstr ""
+
+#: src/ui/player_window_options.cpp:182
+#. Preserve separators, file patterns and format placeholders.
+msgctxt "app"
+msgid "文件关联已登记在以下安装目录：\n"
+msgstr ""
+
+#: src/settings/file_association.cpp:1237 src/settings/file_association.cpp:1243 src/settings/file_association.cpp:1249
+msgctxt "app"
+msgid "文件关联提交"
+msgstr ""
+
+#: src/settings/file_association.cpp:132
+msgctxt "app"
+msgid "文件关联由另一个安装目录管理"
+msgstr ""
+
+#: src/ui/player_window_extension_correction.cpp:119
+msgctxt "app"
+msgid "文件大小："
+msgstr ""
+
+#: src/updater/main.cpp:131
+#. Preserve separators, file patterns and format placeholders.
+msgctxt "app"
+msgid "文件已更新，程序启动较慢。旧文件备份：\n"
+msgstr ""
+
+#: src/updater/main.cpp:128
+msgctxt "app"
+msgid "新版启动后异常退出。"
+msgstr ""
+
+#: src/updater/main.cpp:122
+msgctxt "app"
+msgid "新版启动失败。"
+msgstr ""
+
+#: src/ui/player_window_options.cpp:6922
+msgctxt "app"
+msgid "旁路"
+msgstr ""
+
+#: src/ui/player_window_options.cpp:6921
+msgctxt "app"
+msgid "旁路（保留插件设置）"
+msgstr ""
+
+#: src/ui/player_window_lyric_content.cpp:89 src/ui/player_window_options.cpp:4884
+msgctxt "app"
+msgid "无"
+msgstr ""
+
+#: src/updater/main.cpp:155
+msgctxt "app"
+msgid "无可用发行包"
+msgstr ""
+
+#: src/ui/player_window.cpp:4210
+#. Preserve separators, file patterns and format placeholders.
+msgctxt "app"
+msgid "无法保存播放列表、歌词关联或设置：\n\n"
+msgstr ""
+
+#: src/ui/player_window_osu_library.cpp:169
+msgctxt "app"
+msgid "无法准备导出，请重新读取歌曲列表后重试。"
+msgstr ""
+
+#: src/ui/disc_lookup_dialog.cpp:34
+msgctxt "app"
+msgid "无法启动查询线程"
+msgstr ""
+
+#: src/ui/player_window_playlist_properties.cpp:1914
+msgctxt "app"
+msgid "无法读取专辑封面：图片格式无效或超过允许的大小。"
+msgstr ""
+
+#: src/audio/archive_member.cpp:376
+msgctxt "app"
+msgid "无法读取压缩包，请检查文件是否完整且可访问。"
+msgstr ""
+
+#: src/lyrics/service_catalog.cpp:163
 msgctxt "app"
 msgid "无法读取有效的服务器 XML，保留原文件，不允许覆盖。"
+msgstr ""
+
+#: src/ui/player_window_osu_library.cpp:286
+msgctxt "app"
+msgid "无法读取歌曲列表，请检查媒体库 → osu! 中的路径。"
 msgstr ""
 
 #: src/integrations/discord_presence.cpp:133
@@ -723,19 +1606,316 @@ msgctxt "app"
 msgid "时长未知"
 msgstr ""
 
+#: src/ui/player_window_extension_correction.cpp:125
+msgctxt "app"
+msgid "是否更改为与实际格式对应的后缀？"
+msgstr ""
+
+#: src/ui/player_window_osu_library.cpp:180
+msgctxt "app"
+msgid "显示osu!lazer列表"
+msgstr ""
+
+#: src/ui/player_window_osu_library.cpp:178
+msgctxt "app"
+msgid "显示osu列表"
+msgstr ""
+
+#: src/ui/player_window_skin_plugin.cpp:604
+msgctxt "app"
+msgid "显示内容"
+msgstr ""
+
+#: src/audio/wasapi_sink.cpp:392
+msgctxt "app"
+msgid "暂停播放"
+msgstr ""
+
+#: src/ui/player_window_extension_correction.cpp:120
+msgctxt "app"
+msgid "更改为："
+msgstr ""
+
+#: src/ui/player_window_extension_correction.cpp:40
+msgctxt "app"
+msgid "更改后缀：目标文件已存在"
+msgstr ""
+
+#: src/ui/player_window_extension_correction.cpp:257
+msgctxt "app"
+msgid "更改文件后缀"
+msgstr ""
+
+#: src/updater/main.cpp:153
+msgctxt "app"
+msgid "更新完成。旧文件备份："
+msgstr ""
+
+#: src/ui/player_window_options.cpp:4928
+msgctxt "app"
+msgid "更新源"
+msgstr ""
+
+#: src/ui/player_window_lyrics.cpp:3888
+msgctxt "app"
+msgid "替换"
+msgstr ""
+
+#: src/ui/player_window_lyrics.cpp:4528
+msgctxt "app"
+msgid "替换逐字标签\tCtrl+F9"
+msgstr ""
+
+#: src/ui/player_window_options.cpp:4842
+msgctxt "app"
+msgid "最小化到系统栏"
+msgstr ""
+
+#: src/audio/wasapi_sink.cpp:343
+msgctxt "app"
+msgid "最终高精度编码"
+msgstr ""
+
+#: src/ui/player_window_options.cpp:6926
+msgctxt "app"
+msgid "最近实际路径"
+msgstr ""
+
+#: src/audio/archive_member.cpp:363
+msgctxt "app"
+msgid "未安装可用的 OSZ 插件。请将可选插件 ttp_osu.dll 放入 AddIn 目录后重新启动播放器。"
+msgstr ""
+
 #: src/integrations/discord_presence.cpp:385 src/integrations/discord_track_presence.cpp:96
 msgctxt "app"
 msgid "未知曲目"
 msgstr ""
 
-#: src/ui/player_window_options.cpp:4284
+#: src/audio/audio_engine.cpp:3389
+msgctxt "app"
+msgid "未知格式"
+msgstr ""
+
+#: src/ui/player_window_extension_correction.cpp:253
+msgctxt "app"
+msgid "未能更改文件后缀。文件可能已变化或正在被占用。"
+msgstr ""
+
+#: src/ui/player_window_options.cpp:6586
+msgctxt "app"
+msgid "未识别到 osu! 程序，请检查程序文件路径。"
+msgstr ""
+
+#: src/ui/player_window_options.cpp:4780
 msgctxt "app"
 msgid "构建日期:"
+msgstr ""
+
+#: src/settings/file_association.cpp:964
+msgctxt "app"
+msgid "枚举现有文件关联"
+msgstr ""
+
+#: src/audio/wasapi_sink.cpp:275
+msgctxt "app"
+msgid "查询对齐尺寸"
+msgstr ""
+
+#: src/ui/player_window_playlist.cpp:4794
+msgctxt "app"
+msgid "查询曲目信息 (MusicBrainz)..."
+msgstr ""
+
+#: src/audio/wasapi_sink.cpp:167
+msgctxt "app"
+msgid "查询缓冲区"
+msgstr ""
+
+#: src/audio/wasapi_sink.cpp:282
+msgctxt "app"
+msgid "查询缓冲区大小"
+msgstr ""
+
+#: src/ui/disc_lookup_dialog.cpp:54
+msgctxt "app"
+msgid "标题"
+msgstr ""
+
+#: src/updater/main.cpp:152
+msgctxt "app"
+msgid "检查失败"
+msgstr ""
+
+#: src/ui/player_window_update.cpp:60 src/ui/player_window_update.cpp:79
+msgctxt "app"
+msgid "检查更新失败："
+msgstr ""
+
+#: src/ui/options_library_tabs.h:168
+#. Preserve separators, file patterns and format placeholders.
+msgctxt "app"
+msgid "歌曲目录为 lazer 存储位置下的 files 文件夹。\r\n路径可使用 %USERPROFILE% 等环境变量。"
+msgstr ""
+
+#: src/ui/options_library_tabs.h:167
+#. Preserve separators, file patterns and format placeholders.
+msgctxt "app"
+msgid "歌曲目录通常为 osu! 程序目录下的 Songs 文件夹。\r\n路径可使用 %USERPROFILE% 等环境变量。"
+msgstr ""
+
+#: src/ui/options_library_tabs.h:157
+msgctxt "app"
+msgid "歌曲目录："
+msgstr ""
+
+#: src/ui/player_window_lyric_content.cpp:83
+msgctxt "app"
+msgid "歌词"
+msgstr ""
+
+#: src/ui/player_window_lyric_content.cpp:83
+msgctxt "app"
+msgid "歌词与视觉同屏"
+msgstr ""
+
+#: src/lyrics/online_search.cpp:218
+msgctxt "app"
+msgid "歌词搜索组件缺失或版本过旧，请更新 AddIn\\ttp_lrcsh.dll"
+msgstr ""
+
+#: src/updater/main.cpp:71
+msgctxt "app"
+msgid "正在下载更新…"
+msgstr ""
+
+#: src/ui/playlist_transforms.cpp:263
+msgctxt "app"
+msgid "正在保存"
+msgstr ""
+
+#: src/ui/disc_lookup_dialog.cpp:25
+msgctxt "app"
+msgid "正在保存曲目信息…"
+msgstr ""
+
+#: src/ui/player_window_osu_library.cpp:64
+msgctxt "app"
+msgid "正在取消…"
+msgstr ""
+
+#: src/ui/disc_lookup_dialog.cpp:45 src/ui/player_window_file_intake.cpp:975 src/updater/main.cpp:164
+msgctxt "app"
+msgid "正在取消，请稍候…"
 msgstr ""
 
 #: src/integrations/discord_presence.cpp:147
 msgctxt "app"
 msgid "正在播放"
+msgstr ""
+
+#: src/ui/player_window_osu_library.cpp:47 src/ui/player_window_osu_library.cpp:69
+msgctxt "app"
+msgid "正在收集谱面及资源…"
+msgstr ""
+
+#: src/updater/main.cpp:146
+msgctxt "app"
+msgid "正在替换文件并启动播放器…"
+msgstr ""
+
+#: src/updater/main.cpp:42
+msgctxt "app"
+msgid "正在检查…"
+msgstr ""
+
+#: src/ui/player_window_file_intake.cpp:999
+msgctxt "app"
+msgid "正在检查文件…"
+msgstr ""
+
+#: src/ui/player_window_update.cpp:41 src/updater/main.cpp:42
+msgctxt "app"
+msgid "正在检查新版本…"
+msgstr ""
+
+#: src/ui/player_window_file_intake.cpp:1098
+msgctxt "app"
+msgid "正在解析 OSZ 压缩包…"
+msgstr ""
+
+#: src/ui/disc_lookup_dialog.cpp:25
+msgctxt "app"
+msgid "正在读取光盘布局并查询 MusicBrainz…"
+msgstr ""
+
+#: src/ui/player_window_file_intake.cpp:1128
+msgctxt "app"
+msgid "正在读取包内 CUE 并校验…"
+msgstr ""
+
+#: src/ui/player_window_file_intake.cpp:1095
+msgctxt "app"
+msgid "正在读取压缩包目录并校验…"
+msgstr ""
+
+#: src/ui/disc_lookup_dialog.cpp:25
+msgctxt "app"
+msgid "正在读取所选发行版的曲目…"
+msgstr ""
+
+#: src/app/main.cpp:121
+msgctxt "app"
+msgid "正在运行的播放器未及时确认请求，可能仍在处理。请先检查播放列表，再决定是否重试。"
+msgstr ""
+
+#: src/updater/main.cpp:235
+msgctxt "app"
+msgid "此目录的更新器已经打开。"
+msgstr ""
+
+#: src/ui/disc_lookup_dialog.cpp:78
+msgctxt "app"
+msgid "没有找到匹配的发行版。未修改曲目信息。"
+msgstr ""
+
+#: src/audio/winamp_dsp.cpp:744
+msgctxt "app"
+msgid "注册表配置接入失败："
+msgstr ""
+
+#: src/audio/plugin_registry.cpp:1586
+msgctxt "app"
+msgid "注册表：共享 registry.json（缺失时读取系统）"
+msgstr ""
+
+#: src/ui/player_window_lyrics.cpp:3245
+msgctxt "app"
+msgid "游戏歌曲目录为只读，请选择其它文件夹保存歌词。"
+msgstr ""
+
+#: src/ui/player_window_options.cpp:4884
+msgctxt "app"
+msgid "点击关闭"
+msgstr ""
+
+#: src/ui/player_window_options.cpp:4884
+msgctxt "app"
+msgid "点击最小化"
+msgstr ""
+
+#: src/ui/output_devices.cpp:957
+msgctxt "app"
+msgid "独占"
+msgstr ""
+
+#: src/audio/wasapi_sink.cpp:261
+msgctxt "app"
+msgid "独占格式协商"
+msgstr ""
+
+#: src/ui/player_window_options.cpp:4789 src/ui/player_window_options.cpp:6645
+msgctxt "app"
+msgid "献给"
 msgstr ""
 
 #: src/integrations/discord_presence.cpp:129
@@ -748,19 +1928,84 @@ msgctxt "app"
 msgid "电台直播"
 msgstr ""
 
-#: src/ui/player_window.cpp:4504
+#: src/ui/player_window_options.cpp:4848
 msgctxt "app"
 msgid "界面语言"
 msgstr ""
 
-#: src/ui/player_window.cpp:5074
+#: src/ui/player_window_options.cpp:4877
 msgctxt "app"
 msgid "界面语言将在下次启动播放器时生效。"
 msgstr ""
 
-#: src/ui/player_window_options.cpp:4288
+#: src/ui/player_window_options.cpp:4834 src/ui/player_window_options.cpp:6083
+msgctxt "app"
+msgid "留空时不显示个人定制文字。"
+msgstr ""
+
+#: src/ui/player_window_options.cpp:4784
 msgctxt "app"
 msgid "社区版"
+msgstr ""
+
+#: src/ui/options_library_tabs.h:157
+msgctxt "app"
+msgid "程序文件："
+msgstr ""
+
+#: src/audio/wasapi_sink.cpp:284
+msgctxt "app"
+msgid "空音频缓冲区"
+msgstr ""
+
+#: src/updater/main.cpp:159
+msgctxt "app"
+msgid "立即更新"
+msgstr ""
+
+#: src/settings/file_association.cpp:218
+msgctxt "app"
+msgid "等待另一项文件关联操作"
+msgstr ""
+
+#: src/ui/player_window_options.cpp:4864
+msgctxt "app"
+msgid "简体中文"
+msgstr ""
+
+#: src/ui/player_window_options.cpp:6855
+msgctxt "app"
+msgid "系统混音格式"
+msgstr ""
+
+#: src/ui/player_window_options.cpp:6857
+msgctxt "app"
+msgid "系统要求"
+msgstr ""
+
+#: src/ui/output_devices.cpp:958
+msgctxt "app"
+msgid "系统默认多媒体设备"
+msgstr ""
+
+#: src/ui/player_window_options.cpp:4865
+msgctxt "app"
+msgid "繁体中文"
+msgstr ""
+
+#: src/ui/player_window_playlist.cpp:5466
+msgctxt "app"
+msgid "终止"
+msgstr ""
+
+#: src/audio/wasapi_sink.cpp:169
+msgctxt "app"
+msgid "缓冲区大小"
+msgstr ""
+
+#: src/updater/main.cpp:141 include/ttplayer/update/update.h:18
+msgctxt "app"
+msgid "缺少 HTTPS 组件，请前往发布页手动下载更新"
 msgstr ""
 
 #: src/integrations/discord_presence.cpp:131 src/integrations/discord_track_presence.cpp:91
@@ -773,7 +2018,12 @@ msgctxt "app"
 msgid "网络音频 · 时长未知"
 msgstr ""
 
-#: src/ui/player_window.cpp:4496
+#: src/ui/player_window_options.cpp:5230
+msgctxt "app"
+msgid "自动查询失败时显示错误信息"
+msgstr ""
+
+#: src/ui/player_window_options.cpp:4862
 msgctxt "app"
 msgid "自动（系统语言）"
 msgstr ""
@@ -783,14 +2033,295 @@ msgctxt "app"
 msgid "自定义..."
 msgstr ""
 
+#: src/ui/disc_lookup_dialog.cpp:54
+msgctxt "app"
+msgid "艺术家"
+msgstr ""
+
+#: src/ui/player_window_options.cpp:4866
+msgctxt "app"
+msgid "英文"
+msgstr ""
+
+#: src/ui/player_window_extension_correction.cpp:41
+msgctxt "app"
+msgid "覆盖"
+msgstr ""
+
+#: src/ui/player_window_extension_correction.cpp:123
+msgctxt "app"
+msgid "覆盖将替换已有文件；加编号将保留两个文件，例如："
+msgstr ""
+
+#: src/ui/player_window_lyric_content.cpp:83 src/ui/player_window_skin_plugin.cpp:595
+msgctxt "app"
+msgid "视觉效果"
+msgstr ""
+
+#: src/ui/player_window_lyric_content.cpp:94
+msgctxt "app"
+msgid "视觉效果类型"
+msgstr ""
+
+#: src/audio/precise_seek_source.cpp:85
+msgctxt "app"
+msgid "解码器定位后返回了无效的 PCM 格式或数据。"
+msgstr ""
+
 #: src/ui/player_window_playlist_search.cpp:406
 msgctxt "app"
 msgid "计算机"
 msgstr ""
 
-#: src/lyrics/service_catalog.cpp:248
+#: src/ui/player_window_options.cpp:6901
+msgctxt "app"
+msgid "设备兼容"
+msgstr ""
+
+#: src/ui/player_window_options.cpp:6915
+msgctxt "app"
+msgid "设备自动协商，至少 24 位"
+msgstr ""
+
+#: src/ui/player_window_options.cpp:6856
+msgctxt "app"
+msgid "设备选择"
+msgstr ""
+
+#: src/ui/player_window_options.cpp:4839
+msgctxt "app"
+msgid "识别到错误后缀时提示更改"
+msgstr ""
+
+#: src/ui/player_window_extension_correction.cpp:117
+msgctxt "app"
+msgid "识别格式："
+msgstr ""
+
+#: src/app/main.cpp:57
+msgctxt "app"
+msgid "请先完全退出播放器，再将 REG 文件拖到 EXE 图标上导入。"
+msgstr ""
+
+#: src/ui/osu_visual_client.cpp:347
+msgctxt "app"
+msgid "请更新 AddIn\\ttp_osu.dll 以使用节拍星环"
+msgstr ""
+
+#: src/ui/player_window_options.cpp:6584
+msgctxt "app"
+msgid "请更新 ttp_osu.dll，以使用程序识别和路径发现功能。"
+msgstr ""
+
+#: src/ui/player_window_osu_library.cpp:166
+msgctxt "app"
+msgid "请检查资源是否完整；如果 osu!lazer 正在写入曲库，请关闭后重试。"
+msgstr ""
+
+#: src/app/main.cpp:48
+msgctxt "app"
+msgid "请每次将一个 REG 文件拖到播放器 EXE 图标上。"
+msgstr ""
+
+#: src/ui/update_notice.cpp:55
+msgctxt "app"
+msgid "请点击选项前往更新"
+msgstr ""
+
+#: src/ui/archive_password_dialog.cpp:36
+msgctxt "app"
+msgid "请输入此压缩包的密码："
+msgstr ""
+
+#: src/audio/archive_member.cpp:374
+msgctxt "app"
+msgid "读取压缩包时内存不足。"
+msgstr ""
+
+#: src/lyrics/service_catalog.cpp:276
 msgctxt "app"
 msgid "读取歌词服务器列表失败。"
+msgstr ""
+
+#: src/settings/file_association.cpp:959
+msgctxt "app"
+msgid "读取现有文件关联"
+msgstr ""
+
+#: src/ui/player_window_update.cpp:61 src/ui/player_window_update.cpp:76 src/ui/player_window_update.cpp:101 src/updater/main.cpp:151 src/updater/main.cpp:186 src/updater/main.cpp:235
+msgctxt "app"
+msgid "软件更新"
+msgstr ""
+
+#: src/ui/player_window_options.cpp:6854
+msgctxt "app"
+msgid "输出模式"
+msgstr ""
+
+#: src/ui/player_window_options.cpp:6914
+msgctxt "app"
+msgid "输出精度"
+msgstr ""
+
+#: src/ui/disc_lookup_dialog.cpp:41
+msgctxt "app"
+msgid "近似匹配：请核对整张光盘和每首曲目后再保存。"
+msgstr ""
+
+#: src/ui/playlist_transforms.cpp:278
+msgctxt "app"
+msgid "进行中"
+msgstr ""
+
+#: src/ui/options_network_tabs.h:49
+msgctxt "app"
+msgid "连接设置"
+msgstr ""
+
+#: src/ui/player_window_options.cpp:7408
+msgctxt "app"
+msgid "选择 osu! 或 osu!lazer 程序"
+msgstr ""
+
+#: src/ui/archive_password_dialog.cpp:56
+msgctxt "app"
+msgid "选择分卷："
+msgstr ""
+
+#: src/ui/player_window_options.cpp:7414
+msgctxt "app"
+msgid "选择歌曲目录"
+msgstr ""
+
+#: src/ui/update_notice.cpp:43
+msgctxt "app"
+msgid "选项"
+msgstr ""
+
+#: src/app/main.cpp:69
+#. Preserve separators, file patterns and format placeholders.
+msgctxt "app"
+msgid "配置已导入共享 PluginState\\registry.json。\n已接入兼容层的插件会在下次加载时读取这些配置；系统注册表未被修改。"
+msgstr ""
+
+#: src/ui/player_window_options.cpp:6918
+msgctxt "app"
+msgid "采样频率"
+msgstr ""
+
+#: src/audio/wasapi_sink.cpp:278
+msgctxt "app"
+msgid "重新创建音频流"
+msgstr ""
+
+#: src/updater/main.cpp:159
+msgctxt "app"
+msgid "重新检查"
+msgstr ""
+
+#: src/audio/wasapi_sink.cpp:401
+msgctxt "app"
+msgid "重置音频流"
+msgstr ""
+
+#: src/ui/options_network_tabs.h:50
+msgctxt "app"
+msgid "音乐窗"
+msgstr ""
+
+#: src/ui/disc_lookup_dialog.cpp:54
+msgctxt "app"
+msgid "音轨"
+msgstr ""
+
+#: src/ui/player_window_options.cpp:6909
+msgctxt "app"
+msgid "音频处理"
+msgstr ""
+
+#: src/audio/wasapi_sink.cpp:208
+msgctxt "app"
+msgid "预读缓冲区大小"
+msgstr ""
+
+#: src/ui/player_window_options.cpp:5323 src/ui/player_window_options.cpp:6897
+msgctxt "app"
+msgid "高精度处理"
+msgstr ""
+
+#: src/audio/wasapi_sink.cpp:189
+msgctxt "app"
+msgid "高精度源格式"
+msgstr ""
+
+#: src/audio/wasapi_sink.cpp:239
+msgctxt "app"
+msgid "高精度独占格式协商"
+msgstr ""
+
+#: src/audio/audio_engine.cpp:2738
+msgctxt "app"
+msgid "高精度／原样输出需要选择 WASAPI、ASIO 或 Kernel Streaming；WaveOut 和 DirectSound 请使用原版兼容模式。"
+msgstr ""
+
+#: src/ui/player_window_playlist_properties.cpp:633
+msgctxt "app"
+msgid "高级"
+msgstr ""
+
+#: src/audio/wasapi_sink.cpp:53
+msgctxt "app"
+msgid "默认音频设备 ("
+msgstr ""
+
+#: src/ui/player_window_playlist.cpp:1528
+msgctxt "app"
+msgid "（子轨 "
+msgstr ""
+
+#: src/ui/player_window_options.cpp:3321
+msgctxt "app"
+msgid "（无法读取插件信息）"
+msgstr ""
+
+#: src/audio/audio_engine.cpp:3410
+msgctxt "app"
+msgid "（系统共享混音）"
+msgstr ""
+
+#: src/audio/wasapi_sink.cpp:163
+msgctxt "app"
+msgid "：当前系统不支持 WASAPI，请选择 WaveOut 或 DirectSound。"
+msgstr ""
+
+#: src/audio/wasapi_sink.cpp:158
+msgctxt "app"
+msgid "：设备不支持源采样率、位深或声道数。请选择支持该格式的设备，或改用高精度处理／原版兼容模式。"
+msgstr ""
+
+#: src/audio/wasapi_sink.cpp:159
+msgctxt "app"
+msgid "：设备不支持该采样率、位深或声道数，请调整音频设备选项或使用共享模式。"
+msgstr ""
+
+#: src/audio/wasapi_sink.cpp:151
+msgctxt "app"
+msgid "：设备已被其它程序占用。"
+msgstr ""
+
+#: src/audio/wasapi_sink.cpp:155
+msgctxt "app"
+msgid "：请在系统声音设置中允许独占模式，或选择 WASAPI 共享模式。"
+msgstr ""
+
+#: src/audio/wasapi_sink.cpp:154
+msgctxt "app"
+msgid "：请在系统声音设置中允许独占模式，或选择支持原样输出的设备。"
+msgstr ""
+
+#: src/audio/wasapi_sink.cpp:161
+msgctxt "app"
+msgid "：音频设备已断开或配置已更改，请重新选择设备。"
 msgstr ""
 
 #: src/ui/player_window_playlist_search.cpp:598
@@ -849,6 +2380,122 @@ msgctxt "exe/dialog/4200/title"
 msgid "编辑歌词服务器列表"
 msgstr ""
 
+msgctxt "exe/dialog/4210/control/1/0"
+msgid "更改后缀"
+msgstr ""
+
+msgctxt "exe/dialog/4210/control/2/0"
+msgid "取消"
+msgstr ""
+
+msgctxt "exe/dialog/4210/control/4212/0"
+msgid "加编号"
+msgstr ""
+
+msgctxt "exe/dialog/4210/control/4213/0"
+msgid "不再提示更改"
+msgstr ""
+
+msgctxt "exe/dialog/4210/control/4294967295/0"
+msgid "仅更改文件名，不转换音频。取消后仍可按实际格式播放。"
+msgstr ""
+
+msgctxt "exe/dialog/4210/title"
+msgid "更改文件后缀"
+msgstr ""
+
+msgctxt "exe/dialog/4220/control/1/0"
+msgid "更改"
+msgstr ""
+
+msgctxt "exe/dialog/4220/title"
+msgid "更改音量"
+msgstr ""
+
+msgctxt "exe/dialog/4230/control/2/0"
+msgid "关闭"
+msgstr ""
+
+msgctxt "exe/dialog/4230/control/4232/0"
+msgid "取消任务"
+msgstr ""
+
+msgctxt "exe/dialog/4230/control/4233/0"
+msgid "重新下载"
+msgstr ""
+
+msgctxt "exe/dialog/4230/control/4234/0"
+msgid "关闭窗口后继续下载。"
+msgstr ""
+
+msgctxt "exe/dialog/4230/control/4235/0"
+msgid "导入旧列表..."
+msgstr ""
+
+msgctxt "exe/dialog/4230/title"
+msgid "下载歌曲"
+msgstr ""
+
+msgctxt "exe/dialog/5800/control/1/0"
+msgid "确定"
+msgstr ""
+
+msgctxt "exe/dialog/5800/control/2/0"
+msgid "取消"
+msgstr ""
+
+msgctxt "exe/dialog/5800/control/5804/0"
+msgid "记住密码（仅当前 Windows 用户）"
+msgstr ""
+
+msgctxt "exe/dialog/5800/title"
+msgid "压缩包密码"
+msgstr ""
+
+msgctxt "exe/dialog/5810/control/2/0"
+msgid "取消"
+msgstr ""
+
+msgctxt "exe/dialog/5810/control/5812/0"
+msgid "正在准备导入…"
+msgstr ""
+
+msgctxt "exe/dialog/5810/title"
+msgid "导入歌曲"
+msgstr ""
+
+msgctxt "exe/dialog/5820/control/1/0"
+msgid "继续"
+msgstr ""
+
+msgctxt "exe/dialog/5820/control/2/0"
+msgid "取消"
+msgstr ""
+
+msgctxt "exe/dialog/5820/control/5804/0"
+msgid "浏览…"
+msgstr ""
+
+msgctxt "exe/dialog/5820/title"
+msgid "选择压缩包分卷"
+msgstr ""
+
+msgctxt "exe/dialog/5901/control/1/0"
+msgid "保存"
+msgstr ""
+
+msgctxt "exe/dialog/5901/control/2/0"
+msgid "关闭"
+msgstr ""
+
+msgctxt "exe/dialog/5901/control/4294967295/0"
+msgid "发行版："
+msgstr ""
+
+msgctxt "exe/dialog/5901/title"
+msgid "MusicBrainz 曲目信息"
+msgstr ""
+
 msgctxt "exe/string/4091"
 msgid "屏幕选择"
 msgstr ""
@@ -903,6 +2550,10 @@ msgstr ""
 
 msgctxt "exe/string/4105"
 msgid "缩小歌词"
+msgstr ""
+
+msgctxt "exe/string/4106"
+msgid "双击全屏"
 msgstr ""
 
 msgctxt "exe/string/4110"
@@ -1005,6 +2656,174 @@ msgctxt "exe/string/4134"
 msgid "请先在歌词搜索中选择有效的 HTTP 或 HTTPS 服务器。"
 msgstr ""
 
+msgctxt "exe/string/4135"
+msgid "手动输入..."
+msgstr ""
+
+msgctxt "exe/string/4136"
+msgid "韵动脉冲"
+msgstr ""
+
+msgctxt "exe/string/4137"
+msgid "水波荡漾"
+msgstr ""
+
+msgctxt "exe/string/4138"
+msgid "跟随歌词高亮色"
+msgstr ""
+
+msgctxt "exe/string/4139"
+msgid "基础色"
+msgstr ""
+
+msgctxt "exe/string/4140"
+msgid "全屏背景色"
+msgstr ""
+
+msgctxt "exe/string/4141"
+msgid "重设均衡器"
+msgstr ""
+
+msgctxt "exe/string/4142"
+msgid "切换列表"
+msgstr ""
+
+msgctxt "exe/string/4143"
+msgid "节拍星环"
+msgstr ""
+
+msgctxt "exe/string/4144"
+msgid "环形频谱"
+msgstr ""
+
+msgctxt "exe/string/4145"
+msgid "喷射星星"
+msgstr ""
+
+msgctxt "exe/string/4146"
+msgid "两侧闪光"
+msgstr ""
+
+msgctxt "exe/string/4147"
+msgid "背景视差"
+msgstr ""
+
+msgctxt "exe/string/4148"
+msgid "中心徽标"
+msgstr ""
+
+msgctxt "exe/string/4149"
+msgid "无谱面时的节拍 (BPM):"
+msgstr ""
+
+msgctxt "exe/string/4150"
+msgid "背景色"
+msgstr ""
+
+msgctxt "exe/string/4151"
+msgid "徽标切换"
+msgstr ""
+
+msgctxt "exe/string/4152"
+msgid "千千静听"
+msgstr ""
+
+msgctxt "exe/string/4153"
+msgid "OSU!"
+msgstr ""
+
+msgctxt "exe/string/4154"
+msgid "自定义"
+msgstr ""
+
+msgctxt "exe/string/4155"
+msgid "选择图片..."
+msgstr ""
+
+msgctxt "exe/string/4156"
+msgid "无法使用此图片。请选择有效的 PNG、JPEG、BMP、GIF 或 TIFF 图片；文件不能超过 64 MB，图像不能超过 3200 万像素。原有图案已保留。"
+msgstr ""
+
+msgctxt "exe/string/4157"
+msgid "选择徽标图片"
+msgstr ""
+
+msgctxt "exe/string/4158"
+msgid "图片文件"
+msgstr ""
+
+msgctxt "exe/string/4159"
+msgid "进场效果"
+msgstr ""
+
+msgctxt "exe/string/4160"
+msgid "退出效果"
+msgstr ""
+
+msgctxt "exe/string/4161"
+msgid "视觉全屏"
+msgstr ""
+
+msgctxt "exe/string/4162"
+msgid "视觉歌词同屏"
+msgstr ""
+
+msgctxt "exe/string/4163"
+msgid "歌词全屏"
+msgstr ""
+
+msgctxt "exe/string/4164"
+msgid "单击切换视觉"
+msgstr ""
+
+msgctxt "exe/string/4165"
+msgid "双击切换全屏"
+msgstr ""
+
+msgctxt "exe/string/4166"
+msgid "星环lazer"
+msgstr ""
+
+msgctxt "exe/string/4167"
+msgid "自定义文字"
+msgstr ""
+
+msgctxt "exe/string/4168"
+msgid "梦幻星空"
+msgstr ""
+
+msgctxt "exe/string/4169"
+msgid "分辨率调整："
+msgstr ""
+
+msgctxt "exe/string/4170"
+msgid "自定义"
+msgstr ""
+
+msgctxt "exe/string/4171"
+msgid "拉伸显示"
+msgstr ""
+
+msgctxt "exe/string/4172"
+msgid "宽："
+msgstr ""
+
+msgctxt "exe/string/4173"
+msgid "高："
+msgstr ""
+
+msgctxt "exe/string/4174"
+msgid "显示帧率："
+msgstr ""
+
+msgctxt "exe/string/4175"
+msgid "帧（10–120）"
+msgstr ""
+
+msgctxt "exe/string/4176"
+msgid "像素（2–4096）"
+msgstr ""
+
 msgctxt "ttpres/dialog/200/control/1005/0"
 msgid "nanling"
 msgstr ""
@@ -1037,7 +2856,7 @@ msgctxt "ttpres/dialog/200/control/4294967295/2"
 msgid "版本:"
 msgstr ""
 
-#: src/ui/player_window_options.cpp:4282
+#: src/ui/player_window_options.cpp:4778
 msgctxt "ttpres/dialog/200/control/4294967295/3"
 msgid "完成日期:"
 msgstr ""
@@ -2054,7 +3873,7 @@ msgid "颜色:"
 msgstr ""
 
 #. Preserve separators, file patterns and format placeholders.
-#, c-format
+#. Static syntax example, not printf; the example field name may be translated.
 msgctxt "ttpres/dialog/254/control/4294967295/4"
 msgid "%F:文件名   %E:扩展名    %P:上级路径  %C:编码      %B:码率\n%A:艺术家   %T:标题      %L:专辑      %G:流派      %I:音轨号\n%Y:年代     %D:备注      %R:星级      %(字段名):其它标签字段"
 msgstr ""
@@ -4514,11 +6333,6 @@ msgctxt "ttpres/string/135"
 msgid "您现在使用的已经是最新的版本！\n请继续关注和支持“千千静听”！"
 msgstr ""
 
-#. Preserve separators, file patterns and format placeholders.
-msgctxt "ttpres/string/136"
-msgid "千千靜聽現在有更新，建議您立即安裝更新，體驗 \n最新版本功能。"
-msgstr ""
-
 msgctxt "ttpres/string/148"
 msgid "歌词编辑"
 msgstr ""
@@ -5386,7 +7200,7 @@ msgid "显示频谱分析效果"
 msgstr ""
 
 msgctxt "ttpres/string/32904"
-msgid "将选中歌曲作为下一个播放对象"
+msgid "显示示波器效果"
 msgstr ""
 
 msgctxt "ttpres/string/32905"
@@ -6335,65 +8149,6 @@ msgctxt "ttpres/string/36005"
 msgid "本地歌曲"
 msgstr ""
 
-#. Preserve separators, file patterns and format placeholders.
-msgctxt "ttpres/string/57601"
-msgid "打开一个音频文件进行播放\n播放文件"
-msgstr ""
-
-msgctxt "ttpres/string/57602"
-msgid "关闭文件"
-msgstr ""
-
-#. Preserve separators, file patterns and format placeholders.
-msgctxt "ttpres/string/57634"
-msgid "复制选定内容并将其放到剪贴板上\n复制"
-msgstr ""
-
-#. Preserve separators, file patterns and format placeholders.
-msgctxt "ttpres/string/57635"
-msgid "剪切选定内容并将其放到剪贴板上\n剪切"
-msgstr ""
-
-#. Preserve separators, file patterns and format placeholders.
-msgctxt "ttpres/string/57636"
-msgid "查找指定的文字\n查找"
-msgstr ""
-
-#. Preserve separators, file patterns and format placeholders.
-msgctxt "ttpres/string/57637"
-msgid "插入剪贴板内容\n粘贴"
-msgstr ""
-
-#. Preserve separators, file patterns and format placeholders.
-msgctxt "ttpres/string/57641"
-msgid "替换并指定的文字\n替换"
-msgstr ""
-
-#. Preserve separators, file patterns and format placeholders.
-msgctxt "ttpres/string/57642"
-msgid "选中全部的内容\n全选"
-msgstr ""
-
-#. Preserve separators, file patterns and format placeholders.
-msgctxt "ttpres/string/57643"
-msgid "撤消上次的操作\n撤消"
-msgstr ""
-
-#. Preserve separators, file patterns and format placeholders.
-msgctxt "ttpres/string/57644"
-msgid "重做上次撤消的动作\n重做"
-msgstr ""
-
-#. Preserve separators, file patterns and format placeholders.
-msgctxt "ttpres/string/57664"
-msgid "“千千静听”的参数选项\n千千选项"
-msgstr ""
-
-#. Preserve separators, file patterns and format placeholders.
-msgctxt "ttpres/string/57665"
-msgid "退出“千千静听”\n退出"
-msgstr ""
-
 msgctxt "ttpres/string/6"
 msgid "是"
 msgstr ""
@@ -6406,18 +8161,39 @@ msgctxt "ttpres/string/8"
 msgid "关闭"
 msgstr ""
 
-#: src/ui/player_window_options.cpp:4352
-msgctxt "app"
-msgid "简体中文"
+msgctxt "updater/dialog/101/control/1002/0"
+msgid "正在检查…"
 msgstr ""
 
-#: src/ui/player_window_options.cpp:4353
-msgctxt "app"
-msgid "繁体中文"
+msgctxt "updater/dialog/101/control/1004/0"
+msgid "GitHub 发布页"
 msgstr ""
 
-#: src/ui/player_window_options.cpp:4354
-msgctxt "app"
-msgid "英文"
+msgctxt "updater/dialog/101/control/1005/0"
+msgid "Gitee 发布页"
+msgstr ""
+
+msgctxt "updater/dialog/101/control/1008/0"
+msgid "立即更新"
+msgstr ""
+
+msgctxt "updater/dialog/101/control/2/0"
+msgid "关闭"
+msgstr ""
+
+msgctxt "updater/dialog/101/control/4294967295/0"
+msgid "当前版本号："
+msgstr ""
+
+msgctxt "updater/dialog/101/control/4294967295/1"
+msgid "最新版本号："
+msgstr ""
+
+msgctxt "updater/dialog/101/control/4294967295/2"
+msgid "更新源："
+msgstr ""
+
+msgctxt "updater/dialog/101/title"
+msgid "千千静听 - 软件更新"
 msgstr ""
 

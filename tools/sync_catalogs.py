@@ -166,7 +166,8 @@ def main():
     for language in ('en_US', 'chs', 'cht'):
         path = args.i18n / language / 'ttplayer.po'
         previous = read_po(path) if path.exists() else []
-        resources = {} if language == 'en_US' else resource_entries(args.ttpres / language / 'texts.json')
+        resource_path = args.ttpres / language / 'texts.json'
+        resources = {} if language == 'en_US' or not resource_path.exists() else resource_entries(resource_path)
         text, translated, imported = synchronize(template, previous, resources, language)
         if not path.exists() or path.read_text(encoding='utf-8') != text:
             changed.append(str(path))

@@ -26,6 +26,7 @@ std::string Key(const char* context, std::string_view id) {
 bool ResourceContext(std::string_view context) {
     if (context.starts_with("ttpres/")) context.remove_prefix(7);
     else if (context.starts_with("exe/")) context.remove_prefix(4);
+    else if (context.starts_with("updater/")) context.remove_prefix(8);
     else return false;
     return context.starts_with("string/") || context.starts_with("dialog/") || context.starts_with("menu/");
 }
